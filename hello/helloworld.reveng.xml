@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-name=".*" package="hello"/>
+	
+	<table name="MESSAGE" schema="PUBLIC" class="Message">
+		<primary-key>
+			<generator class="increment"/>
+			<key-column name="MESSAGE_ID" property="id" type="long"/>
+		</primary-key>
+		
+		<column name="MESSAGE_TEXT" property="text"/>	
+		
+		<foreign-key constraint-name="FK_NEXT_MESSAGE">
+			<many-to-one property="nextMessage"/>
+			<set exclude="true"/>
+		</foreign-key>
+	</table>
+</hibernate-reverse-engineering>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 2. 13 ?????? 6:12:16 by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="hello.Message" table="MESSAGE" schema="PUBLIC">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="increment"></generator>
+        </id>
+        <many-to-one name="nextMessage" class="hello.Message" fetch="select">
+            <column name="NEXT_MESSAGE_ID" />
+        </many-to-one>
+        <property name="text" type="string">
+            <column name="MESSAGE_TEXT" />
+        </property>
+    </class>
+</hibernate-mapping>
