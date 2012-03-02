@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="DailyRunning" schema="KBSTRI" table="K_DAILY_RUNNING">
+  <id name="scheduleUniqueId" type="Integer">
+   <column name="SCHEDULE_UNIQUE_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Program" fetch="select" name="program">
+   <column name="CONTENT_ID" precision="0"/>
+  </many-to-one>
+  <many-to-one class="Channel" fetch="select" name="channel">
+   <column length="2" name="CHANNEL_CODE"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="runningDate" type="string">
+   <column length="8" name="RUNNING_DATE"/>
+  </property>
+  <property generated="never" lazy="false" name="startTime" type="string">
+   <column length="6" name="START_TIME"/>
+  </property>
+  <property generated="never" lazy="false" name="endTime" type="string">
+   <column length="6" name="END_TIME"/>
+  </property>
+  <property generated="never" lazy="false" name="programTitle" type="string">
+   <column length="100" name="PROGRAM_TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="runningDurationMin" type="Integer">
+   <column name="RUNNING_DURATION_MIN" precision="0"/>
+  </property>
+ </class>
+</hibernate-mapping>

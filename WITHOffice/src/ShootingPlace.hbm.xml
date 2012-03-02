@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="ShootingPlace" schema="KBSTRI" table="K_SHOOTING_PLACE">
+  <id name="placeId" type="Integer">
+   <column name="PLACE_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="shootingPlace" type="string">
+   <column name="SHOOTING_PLACE"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="shootingPlaceTransportation" type="string">
+   <column name="SHOOTING_PLACE_TRANSPORTATION"/>
+  </property>
+  <property generated="never" lazy="false" name="shootingPlaceContact" type="string">
+   <column name="SHOOTING_PLACE_CONTACT"/>
+  </property>
+  <property generated="never" lazy="false" name="shootingPlaceDetail" type="string">
+   <column name="SHOOTING_PLACE_DETAIL"/>
+  </property>
+  <property generated="never" lazy="false" name="shootingPlaceImagePath" type="string">
+   <column name="SHOOTING_PLACE_IMAGE_PATH"/>
+  </property>
+  <property generated="never" lazy="false" name="posid" type="Integer">
+   <column name="POSID" precision="0"/>
+  </property>
+  <set inverse="true" name="KRelatedShootingPlaces" sort="unsorted">
+   <key>
+    <column name="PLACE_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedShoopingPlace"/>
+  </set>
+ </class>
+</hibernate-mapping>

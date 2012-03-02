@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Encoding" schema="KBSTRI" table="K_ENCODING">
+  <id name="encodingId" type="Integer">
+   <column name="ENCODING_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="videoCodec" type="string">
+   <column length="32" name="VIDEO_CODEC"/>
+  </property>
+  <property generated="never" lazy="false" name="videoBitrate" type="string">
+   <column length="16" name="VIDEO_BITRATE"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="videoHorizontalResolution" type="string">
+   <column length="16" name="VIDEO_HORIZONTAL_RESOLUTION"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="videoVerticalResolution" type="string">
+   <column length="16" name="VIDEO_VERTICAL_RESOLUTION"/>
+  </property>
+  <property generated="never" lazy="false" name="videoFrame" type="string">
+   <column length="16" name="VIDEO_FRAME"/>
+  </property>
+  <property generated="never" lazy="false" name="videoAspectRatio" type="string">
+   <column length="16" name="VIDEO_ASPECT_RATIO"/>
+  </property>
+  <property generated="never" lazy="false" name="autioCodec" type="string">
+   <column length="32" name="AUTIO_CODEC"/>
+  </property>
+  <property generated="never" lazy="false" name="audioBitrate" type="string">
+   <column length="16" name="AUDIO_BITRATE"/>
+  </property>
+  <property generated="never" lazy="false" name="audioChannelCount" type="string">
+   <column length="16" name="AUDIO_CHANNEL_COUNT"/>
+  </property>
+  <property generated="never" lazy="false" name="audioSamplingRate" type="string">
+   <column length="16" name="AUDIO_SAMPLING_RATE"/>
+  </property>
+  <set inverse="true" name="appEncodings" sort="unsorted">
+   <key>
+    <column name="ENCODING_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="AppEncoding"/>
+  </set>
+  <set inverse="true" name="videoFiles" sort="unsorted">
+   <key>
+    <column name="ENCODING_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="VideoFile"/>
+  </set>
+ </class>
+</hibernate-mapping>

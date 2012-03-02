@@ -1,0 +1,42 @@
+<project name="hibernate-tutorial"  xmlns:artifact="urn:maven-artifact-ant">
+
+    <property name="build.dir" value="target/classes"/>
+
+	
+ 	
+	<path id="project.classpath">
+		
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+  
+	<taskdef name="hibernatetool"
+			classname="org.hibernate.tool.ant.HibernateToolTask"
+			classpathref="project.classpath"/>
+	
+
+	<target name="reveng.hbmxml">
+		<hibernatetool destdir="${basedir}/temp">
+			<jdbcconfiguration
+				propertyfile="${basedir}/hibernate.db.properties"
+				revengfile="${basedir}/hibernate.reveng.xml"/>
+			<hbm2hbmxml/>
+			<hbm2cfgxml/>
+		</hibernatetool>
+	</target>
+	
+	<target name="reveng.pojos">
+			<hibernatetool destdir="${basedir}/temp">
+				<configuration>
+					<fileset dir="${basedir}/temp">
+						<include name="*.hbm.xml"/>
+					</fileset>
+				
+				</configuration>
+				<hbm2java jdk5="true" ejb3="true"/>
+				<hbm2cfgxml ejb3="true"/>
+			</hibernatetool>
+		</target>
+
+</project>

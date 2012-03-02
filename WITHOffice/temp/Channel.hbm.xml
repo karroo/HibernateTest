@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Channel" schema="KBSTRI" table="K_CHANNEL">
+  <id name="channelCode" type="string">
+   <column length="2" name="CHANNEL_CODE"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="mediaName" type="String">
+   <column name="MEDIA_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="channelName" type="String">
+   <column name="CHANNEL_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="channelGrade" type="String">
+   <column name="CHANNEL_GRADE"/>
+  </property>
+  <property generated="never" lazy="false" name="channelDescription" type="String">
+   <column name="CHANNEL_DESCRIPTION"/>
+  </property>
+  <property generated="never" lazy="false" name="channelImagePath" type="String">
+   <column name="CHANNEL_IMAGE_PATH"/>
+  </property>
+  <property generated="never" lazy="false" name="liveStreamUrl" type="String">
+   <column name="LIVE_STREAM_URL"/>
+  </property>
+  <property generated="never" lazy="false" name="channelAuthority" type="string">
+   <column length="2" name="CHANNEL_AUTHORITY"/>
+  </property>
+  <set inverse="true" name="dailyRunnings" sort="unsorted">
+   <key>
+    <column length="2" name="CHANNEL_CODE"/>
+   </key>
+   <one-to-many class="DailyRunning"/>
+  </set>
+  <set inverse="true" name="programmings" sort="unsorted">
+   <key>
+    <column length="2" name="CHANNEL_CODE"/>
+   </key>
+   <one-to-many class="Programming"/>
+  </set>
+ </class>
+</hibernate-mapping>

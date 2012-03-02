@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Object" schema="KBSTRI" table="T_OBJECT">
+  <id name="objid" type="Integerl">
+   <column name="OBJID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="objkey" type="string">
+   <column length="64" name="OBJKEY" unique="true"/>
+  </property>
+  <property generated="never" lazy="false" name="objtype" type="Integer">
+   <column name="OBJTYPE" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="objname" type="string">
+   <column name="OBJNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="aboutme" type="string">
+   <column name="ABOUTME"/>
+  </property>
+  <property generated="never" lazy="false" name="title" type="string">
+   <column name="TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="phoneno" type="string">
+   <column length="32" name="PHONENO"/>
+  </property>
+  <property generated="never" lazy="false" name="visitcount" type="Integer">
+   <column name="VISITCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="recentpostingdate" type="timestamp">
+   <column length="7" name="RECENTPOSTINGDATE"/>
+  </property>
+  <property generated="never" lazy="false" name="permission" type="Integer">
+   <column name="PERMISSION" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="articlecount" type="Integer">
+   <column name="ARTICLECOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="poscount" type="Integer">
+   <column name="POSCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="photocount" type="Integer">
+   <column name="PHOTOCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="newarticlecount" type="Integer">
+   <column name="NEWARTICLECOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="filecount" type="Integer">
+   <column name="FILECOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="textcount" type="Integer">
+   <column name="TEXTCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="contentscount" type="Integer">
+   <column name="CONTENTSCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="activitypoint" type="Integer">
+   <column name="ACTIVITYPOINT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="urlcount" type="Integer">
+   <column name="URLCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="statuscode" type="Integer">
+   <column name="STATUSCODE" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="isexistsmsg" type="Boolean">
+   <column length="1" name="ISEXISTSMSG" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="regdate" type="timestamp">
+   <column length="7" name="REGDATE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="nationalcode" type="string">
+   <column length="5" name="NATIONALCODE"/>
+  </property>
+  <property generated="never" lazy="false" name="domainid" type="Integer">
+   <column name="DOMAINID" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="orgid" type="Integer">
+   <column name="ORGID" precision="0"/>
+  </property>
+  <set inverse="true" name="programCodes" sort="unsorted">
+   <key>
+    <column name="OBJID" precision="0"/>
+   </key>
+   <one-to-many class="ProgramCode"/>
+  </set>
+  <set inverse="true" name="members" sort="unsorted">
+   <key>
+    <column name="MEMBERID" not-null="true" precision="0" unique="true"/>
+   </key>
+   <one-to-many class="Member"/>
+  </set>
+  <set inverse="true" name="articles" sort="unsorted">
+   <key>
+    <column name="AUTHORID" precision="0"/>
+   </key>
+   <one-to-many class="Article"/>
+  </set>
+  <set inverse="true" name="objectCategories" sort="unsorted">
+   <key>
+    <column name="OBJID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="ObjectCategory"/>
+  </set>
+ </class>
+</hibernate-mapping>

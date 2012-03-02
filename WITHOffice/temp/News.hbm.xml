@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="News" schema="KBSTRI" table="K_NEWS">
+  <id name="newsId" type="Integer">
+   <column name="NEWS_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="articleTitle" type="string">
+   <column name="ARTICLE_TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="articleContents" type="string">
+   <column name="ARTICLE_CONTENTS"/>
+  </property>
+  <property generated="never" lazy="false" name="articleCategoryName" type="string">
+   <column name="ARTICLE_CATEGORY_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="internalYn" type="string">
+   <column length="1" name="INTERNAL_YN"/>
+  </property>
+  <property generated="never" lazy="false" name="articleUrl" type="string">
+   <column name="ARTICLE_URL"/>
+  </property>
+  <set inverse="true" name="relatedNewses" sort="unsorted">
+   <key>
+    <column name="NEWS_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedNews"/>
+  </set>
+ </class>
+</hibernate-mapping>

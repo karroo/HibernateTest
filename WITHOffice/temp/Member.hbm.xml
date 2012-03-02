@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Member" schema="KBSTRI" table="T_MEMBER">
+  <id name="memberid" type="Integer">
+   <column name="MEMBERID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Object" fetch="select" insert="false"
+   name="TObject" update="false">
+   <column name="MEMBERID" not-null="true" precision="0" unique="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="authkey" type="string">
+   <column length="64" name="AUTHKEY"/>
+  </property>
+  <property generated="never" lazy="false" name="loginid" type="string">
+   <column length="64" name="LOGINID"/>
+  </property>
+  <property generated="never" lazy="false" name="loginpwd" type="string">
+   <column length="32" name="LOGINPWD"/>
+  </property>
+  <property generated="never" lazy="false" name="name" type="string">
+   <column name="NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="articlenewscount" type="Integer">
+   <column name="ARTICLENEWSCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="friendnewscount" type="String">
+   <column name="FRIENDNEWSCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="friendcount" type="String">
+   <column name="FRIENDCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="joinclubcount" type="String">
+   <column name="JOINCLUBCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="followingcount" type="Integer">
+   <column name="FOLLOWINGCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="followercount" type="big_decimal">
+   <column name="FOLLOWERCOUNT" not-null="true" precision="0"/>
+  </property>
+  <set inverse="true" name="customChannelBookmark" sort="unsorted" table="K_CUSTOM_CHANNEL_BOOKMARK">
+   <key>
+    <column name="MEMBERID" not-null="true" precision="0"/>
+   </key>
+   <many-to-many entity-name="CustomChannel" unique="false">
+    <column name="CHANNEL_ID" not-null="true" precision="0"/>
+   </many-to-many>
+  </set>
+  <set inverse="true" name="surveyParticipations" sort="unsorted">
+   <key>
+    <column name="MEMBERID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="SurveyParticipation"/>
+  </set>
+  <set inverse="true" name="quizParticipations" sort="unsorted">
+   <key>
+    <column name="MEMBERID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="QuizParticipation"/>
+  </set>
+  <set inverse="true" name="programInformations" sort="unsorted">
+   <key>
+    <column name="MEMBERID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="ProgramInformation"/>
+  </set>
+  <set inverse="true" name="myVideos" sort="unsorted" table="K_MY_VIDEO">
+   <key>
+    <column name="MEMBERID" not-null="true" precision="0"/>
+   </key>
+   <many-to-many entity-name="Content" unique="false">
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </many-to-many>
+  </set>
+  <set inverse="true" name="contentSuggestion" sort="unsorted" table="K_CONTENT_SUGGESTION">
+   <key>
+    <column name="MEMBERID" not-null="true" precision="0"/>
+   </key>
+   <many-to-many entity-name="Content" unique="false">
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </many-to-many>
+  </set>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Recipe" schema="KBSTRI" table="K_RECIPE">
+  <id name="recipeId" type="Integer">
+   <column name="RECIPE_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="menuTitle" type="string">
+   <column name="MENU_TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="menuDetail" type="string">
+   <column name="MENU_DETAIL"/>
+  </property>
+  <property generated="never" lazy="false" name="menuImagePath" type="string">
+   <column name="MENU_IMAGE_PATH"/>
+  </property>
+  <property generated="never" lazy="false" name="ingredient" type="string">
+   <column name="INGREDIENT"/>
+  </property>
+  <property generated="never" lazy="false" name="ingredientImagePath" type="string">
+   <column name="INGREDIENT_IMAGE_PATH"/>
+  </property>
+  <property generated="never" lazy="false" name="cooking" type="string">
+   <column name="COOKING"/>
+  </property>
+  <property generated="never" lazy="false" name="cookingTime" type="Integer">
+   <column name="COOKING_TIME" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="ingredientDetail" type="string">
+   <column name="INGREDIENT_DETAIL"/>
+  </property>
+  <set inverse="true" name="relatedRecipes" sort="unsorted">
+   <key>
+    <column name="RECIPE_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedRecipe"/>
+  </set>
+ </class>
+</hibernate-mapping>

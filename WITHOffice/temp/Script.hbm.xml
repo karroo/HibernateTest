@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Script" schema="KBSTRI" table="K_SCRIPT">
+  <id name="scriptId" type="Integer">
+   <column name="SCRIPT_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Content" fetch="select" name="content">
+   <column name="CONTENT_ID" precision="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="scriptTitle" type="string">
+   <column name="SCRIPT_TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="scriptFilePath" type="string">
+   <column name="SCRIPT_FILE_PATH"/>
+  </property>
+  <property generated="never" lazy="false" name="scriptFullText" type="string">
+   <column name="SCRIPT_FULL_TEXT"/>
+  </property>
+ </class>
+</hibernate-mapping>

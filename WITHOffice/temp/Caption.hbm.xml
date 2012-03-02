@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Caption" schema="KBSTRI" table="K_CAPTION">
+  <id name="captionId" type="Integer">
+   <column name="CAPTION_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Content" fetch="select" name="content">
+   <column name="CONTENT_ID" precision="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="fileFormat" type="string">
+   <column length="8" name="FILE_FORMAT"/>
+  </property>
+  <property generated="never" lazy="false" name="captionFilePath" type="string">
+   <column name="CAPTION_FILE_PATH"/>
+  </property>
+  <property generated="never" lazy="false" name="captionLanguageKind" type="string">
+   <column name="CAPTION_LANGUAGE_KIND"/>
+  </property>
+ </class>
+</hibernate-mapping>

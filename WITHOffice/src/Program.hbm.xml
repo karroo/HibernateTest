@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Program" schema="KBSTRI" table="K_PROGRAM">
+  <id name="contentId" type="Integer">
+   <column name="CONTENT_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ProgramCode" fetch="select" name="programCode">
+   <column length="10" name="PROGRAM_CODE"/>
+  </many-to-one>
+  <many-to-one class="Content" fetch="select" insert="false"
+   name="content" update="false">
+   <column name="CONTENT_ID" not-null="true" precision="0" unique="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="programId" type="string">
+   <column length="20" name="PROGRAM_ID" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="informationPossibleYn" type="Boolean">
+   <column length="1" name="INFORMATION_POSSIBLE_YN"/>
+  </property>
+  <property generated="never" lazy="false" name="programSequenceNumber" type="Integer">
+   <column name="PROGRAM_SEQUENCE_NUMBER" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="programTitle" type="string">
+   <column name="PROGRAM_TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="originalTitle" type="string">
+   <column name="ORIGINAL_TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="programSubtitle" type="string">
+   <column name="PROGRAM_SUBTITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="mainStory" type="string">
+   <column name="MAIN_STORY"/>
+  </property>
+  <property generated="never" lazy="false" name="mainImagePath" type="string">
+   <column name="MAIN_IMAGE_PATH"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="programDeliberationGrade" type="string">
+   <column name="PROGRAM_DELIBERATION_GRADE"/>
+  </property>
+  <property generated="never" lazy="false" name="programGenre" type="string">
+   <column name="PROGRAM_GENRE"/>
+  </property>
+  <property generated="never" lazy="false" name="durationSecond" type="Integer">
+   <column name="DURATION_SECOND" precision="0"/>
+  </property>
+  <set inverse="true" name="programmings" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" precision="0"/>
+   </key>
+   <one-to-many class="Programming"/>
+  </set>
+  <set inverse="true" name="dailyRunnings" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" precision="0"/>
+   </key>
+   <one-to-many class="DailyRunning"/>
+  </set>
+ </class>
+</hibernate-mapping>

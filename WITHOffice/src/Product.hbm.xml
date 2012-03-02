@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Product" schema="KBSTRI" table="K_PRODUCT">
+  <id name="productId" type="Integer">
+   <column name="PRODUCT_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="productName" type="string">
+   <column name="PRODUCT_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="mainImagePath" type="string">
+   <column name="MAIN_IMAGE_PATH"/>
+  </property>
+  <property generated="never" lazy="false" name="detailImagePath" type="string">
+   <column name="DETAIL_IMAGE_PATH"/>
+  </property>
+  <property generated="never" lazy="false" name="productDescription" type="string">
+   <column name="PRODUCT_DESCRIPTION"/>
+  </property>
+  <property generated="never" lazy="false" name="productPrice" type="Integer">
+   <column name="PRODUCT_PRICE" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="sponsorName" type="string">
+   <column name="SPONSOR_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="sponsorUrl" type="string">
+   <column name="SPONSOR_URL"/>
+  </property>
+  <property generated="never" lazy="false" name="purchaseUrl" type="string">
+   <column name="PURCHASE_URL"/>
+  </property>
+  <set inverse="true" name="relatedProducts" sort="unsorted">
+   <key>
+    <column name="PRODUCT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedProduct"/>
+  </set>
+ </class>
+</hibernate-mapping>

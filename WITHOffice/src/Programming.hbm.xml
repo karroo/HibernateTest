@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Programming" schema="KBSTRI" table="K_PROGRAMMING">
+  <id name="scheduleUniqueId" type="Integer">
+   <column name="SCHEDULE_UNIQUE_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Program" fetch="select" name="program">
+   <column name="CONTENT_ID" precision="0"/>
+  </many-to-one>
+  <many-to-one class="Channel" fetch="select" name="channel">
+   <column length="2" name="CHANNEL_CODE"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="programTitle" type="string">
+   <column length="100" name="PROGRAM_TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="programPlannedDate" type="string">
+   <column length="8" name="PROGRAM_PLANNED_DATE"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="programPlannedStartTime" type="string">
+   <column length="6" name="PROGRAM_PLANNED_START_TIME"/>
+  </property>
+  <property generated="never" lazy="false" name="programPlannedEndTime" type="string">
+   <column length="6" name="PROGRAM_PLANNED_END_TIME"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="programPlannedDurationMin" type="Integer">
+   <column name="PROGRAM_PLANNED_DURATION_MIN" precision="0"/>
+  </property>
+ </class>
+</hibernate-mapping>

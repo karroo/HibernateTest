@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="RelatedPerson" schema="KBSTRI" table="K_RELATED_PERSON">
+  <composite-id class="RelatedPersonId" mapped="false" name="id" unsaved-value="undefined">
+   <key-property name="personId" type="Integer">
+    <column name="PERSON_ID" precision="0"/>
+   </key-property>
+   <key-property name="contentId" type="Integer">
+    <column name="CONTENT_ID" precision="0"/>
+   </key-property>
+  </composite-id>
+  <many-to-one class="Content" fetch="select" insert="false"
+   name="content" update="false">
+   <column name="CONTENT_ID" not-null="true" precision="0"/>
+  </many-to-one>
+  <many-to-one class="Person" fetch="select" insert="false"
+   name="person" update="false">
+   <column name="PERSON_ID" not-null="true" precision="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="castingName" type="string">
+   <column name="CASTING_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="role" type="string">
+   <column name="ROLE"/>
+  </property>
+  <property generated="never" lazy="false" name="castDescription" type="string">
+   <column name="CAST_DESCRIPTION"/>
+  </property>
+  <property generated="never" lazy="false" name="castingImagePath" type="string">
+   <column name="CASTING_IMAGE_PATH"/>
+  </property>
+ </class>
+</hibernate-mapping>

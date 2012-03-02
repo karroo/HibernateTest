@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="ObjectCategory" schema="KBSTRI" table="T_OBJECTCATEGORY">
+  <composite-id class="ObjectCategoryId" mapped="false" name="id" unsaved-value="undefined">
+   <key-property name="objid" type="Integer">
+    <column name="OBJID" precision="0"/>
+   </key-property>
+   <key-property name="categoryid" type="Integer">
+    <column name="CATEGORYID" precision="0"/>
+   </key-property>
+  </composite-id>
+  <many-to-one class="Object" fetch="select" insert="false"
+   name="object" update="false">
+   <column name="OBJID" not-null="true" precision="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="categoryname" type="string">
+   <column name="CATEGORYNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="depth1" type="string">
+   <column length="32" name="DEPTH1"/>
+  </property>
+  <property generated="never" lazy="false" name="depth2" type="string">
+   <column length="32" name="DEPTH2"/>
+  </property>
+  <property generated="never" lazy="false" name="depth3" type="string">
+   <column length="32" name="DEPTH3"/>
+  </property>
+  <property generated="never" lazy="false" name="depth4" type="string">
+   <column length="32" name="DEPTH4"/>
+  </property>
+  <property generated="never" lazy="false" name="allowposcount" type="Integer">
+   <column name="ALLOWPOSCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="allowphotocount" type="Integer">
+   <column name="ALLOWPHOTOCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="allowfilecount" type="Integer">
+   <column name="ALLOWFILECOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="allowtextcount" type="Integer">
+   <column name="ALLOWTEXTCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="allowcontentscount" type="Integer">
+   <column name="ALLOWCONTENTSCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="allowurlcount" type="Integer">
+   <column name="ALLOWURLCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="articlecount" type="Integer">
+   <column name="ARTICLECOUNT" not-null="true" precision="0"/>
+  </property>
+  <set inverse="true" name="articles" sort="unsorted">
+   <key>
+    <column name="AUTHORID" precision="0"/>
+    <column name="CATEGORYID" precision="0"/>
+   </key>
+   <one-to-many class="Article"/>
+  </set>
+  <set inverse="true" name="contents" sort="unsorted">
+   <key>
+    <column name="OBJID" precision="0"/>
+    <column name="CATEGORYID" precision="0"/>
+   </key>
+   <one-to-many class="Content"/>
+  </set>
+ </class>
+</hibernate-mapping>

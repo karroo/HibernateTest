@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="CorrectAnswer" schema="KBSTRI" table="K_CORRECT_ANSWER">
+  <id name="questionId" type="Integer">
+   <column name="QUESTION_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Question" fetch="select" insert="false"
+   name="question" update="false">
+   <column name="QUESTION_ID" not-null="true" precision="0" unique="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="answer" type="string">
+   <column name="ANSWER"/>
+  </property>
+ </class>
+</hibernate-mapping>

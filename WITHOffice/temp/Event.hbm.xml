@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Event" schema="KBSTRI" table="K_EVENT">
+  <id name="eventId" type="Integer">
+   <column name="EVENT_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="eventUrl" type="string">
+   <column length="100" name="EVENT_URL"/>
+  </property>
+  <property generated="never" lazy="false" name="eventTitle" type="string">
+   <column length="100" name="EVENT_TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="eventContents" type="string">
+   <column name="EVENT_CONTENTS"/>
+  </property>
+  <property generated="never" lazy="false" name="eventType" type="string">
+   <column name="EVENT_TYPE"/>
+  </property>
+  <set inverse="true" name="contents" sort="unsorted" table="K_RELATED_EVENT">
+   <key>
+    <column name="EVENT_ID" not-null="true" precision="0"/>
+   </key>
+   <many-to-many entity-name="Content" unique="false">
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </many-to-many>
+  </set>
+ </class>
+</hibernate-mapping>

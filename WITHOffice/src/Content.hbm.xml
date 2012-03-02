@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Content" schema="KBSTRI" table="K_CONTENT">
+  <id name="contentId" type="string">
+   <column name="CONTENT_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Article" fetch="select" name="article">
+   <column name="ARTICLEID" precision="0"/>
+  </many-to-one>
+  <many-to-one class="ObjectCategory" fetch="select" name="objectCategory">
+   <column name="OBJID" precision="0"/>
+   <column name="CATEGORYID" precision="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="contentKind" type="String">
+   <column length="1" name="CONTENT_KIND"/>
+  </property>
+  <set inverse="true" name="captions" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" precision="0"/>
+   </key>
+   <one-to-many class="Caption"/>
+  </set>
+  <set inverse="true" name="scripts" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" precision="0"/>
+   </key>
+   <one-to-many class="Script"/>
+  </set>
+  <set inverse="true" name="contentRankings" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="ContentRanking"/>
+  </set>
+  <set inverse="true" name="contentSuggestion" sort="unsorted" table="K_CONTENT_SUGGESTION">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <many-to-many entity-name="Member" unique="false">
+    <column name="MEMBERID" not-null="true" precision="0"/>
+   </many-to-many>
+  </set>
+  <set inverse="true" name="seamlesses" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="Seamless"/>
+  </set>
+  <set inverse="true" name="programs" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0" unique="true"/>
+   </key>
+   <one-to-many class="Program"/>
+  </set>
+  <set inverse="true" name="segments" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0" unique="true"/>
+   </key>
+   <one-to-many class="Segment"/>
+  </set>
+  <set inverse="true" name="events" sort="unsorted" table="K_RELATED_EVENT">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <many-to-many entity-name="Event" unique="false">
+    <column name="EVENT_ID" not-null="true" precision="0"/>
+   </many-to-many>
+  </set>
+  <set inverse="true" name="channelItems" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="ChannelItem"/>
+  </set>
+  <set inverse="true" name="myVideo" sort="unsorted" table="K_MY_VIDEO">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <many-to-many entity-name="Member" unique="false">
+    <column name="MEMBERID" not-null="true" precision="0"/>
+   </many-to-many>
+  </set>
+  <set inverse="true" name="relatedQuizs" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="Quiz"/>
+  </set>
+  <set inverse="true" name="relatedSurveies" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedSurvey"/>
+  </set>
+  <set inverse="true" name="relatedContents" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedContent"/>
+  </set>
+  <set inverse="true" name="relatedPersons" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedPerson"/>
+  </set>
+  <set inverse="true" name="relatedNewses" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedNews"/>
+  </set>
+  <set inverse="true" name="relatedRecipes" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedRecipe"/>
+  </set>
+  <set inverse="true" name="relatedShootingPlaces" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedShoopingPlace"/>
+  </set>
+  <set inverse="true" name="relatedProducts" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedProduct"/>
+  </set>
+  <set inverse="true" name="videos" sort="unsorted">
+   <key>
+    <column name="CONTENT_ID" precision="0"/>
+   </key>
+   <one-to-many class="Video"/>
+  </set>
+ </class>
+</hibernate-mapping>

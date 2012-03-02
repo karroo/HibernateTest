@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="QuizParticipation" schema="KBSTRI" table="K_QUIZ_PARTICIPATION">
+  <composite-id class="QuizParticipationId" mapped="false" name="id" unsaved-value="undefined">
+   <key-property name="memberid" type="Integer">
+    <column name="MEMBERID" precision="0"/>
+   </key-property>
+   <key-property name="questionId" type="Integer">
+    <column name="QUESTION_ID" precision="0"/>
+   </key-property>
+   <key-property name="contentId" type="Integer">
+    <column name="CONTENT_ID" precision="0"/>
+   </key-property>
+  </composite-id>
+  <many-to-one class="Member" fetch="select" insert="false"
+   name="member" update="false">
+   <column name="MEMBERID" not-null="true" precision="0"/>
+  </many-to-one>
+  <many-to-one class="Quiz" fetch="select" insert="false"
+   name="relatedQuiz" update="false">
+   <column name="QUESTION_ID" not-null="true" precision="0"/>
+   <column name="CONTENT_ID" not-null="true" precision="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="answer" type="string">
+   <column name="ANSWER"/>
+  </property>
+ </class>
+</hibernate-mapping>

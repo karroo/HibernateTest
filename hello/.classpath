@@ -7,5 +7,26 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/build/maven-ant-tasks-2.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/asm.jar"/>
+	<classpathentry kind="lib" path="lib/asm-attrs.jar"/>
+	<classpathentry kind="lib" path="lib/c3p0-0.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/cglib-2.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-2.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/concurrent.jar"/>
+	<classpathentry kind="lib" path="lib/dbunit-2.2-20060719.153040-1.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate3-client.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-tools.jar"/>
+	<classpathentry kind="lib" path="lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="lib/httpunit.jar"/>
+	<classpathentry kind="lib" path="lib/javassist.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-aop-jdk50.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-common.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-ejb3x.jar"/>
+	<classpathentry kind="lib" path="lib/jsdk23.jar"/>
+	<classpathentry kind="lib" path="lib/jta.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

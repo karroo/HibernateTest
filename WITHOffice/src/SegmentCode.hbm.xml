@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="SegmentCode" schema="KBSTRI" table="K_SEGMENT_CODE">
+  <id name="segmentCode" type="string">
+   <column length="15" name="SEGMENT_CODE"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ProgramCode" fetch="select" name="programCode">
+   <column length="10" name="PROGRAM_CODE"/>
+  </many-to-one>
+  <set inverse="true" name="segments" sort="unsorted">
+   <key>
+    <column length="15" name="SEGMENT_CODE"/>
+   </key>
+   <one-to-many class="Segment"/>
+  </set>
+ </class>
+</hibernate-mapping>

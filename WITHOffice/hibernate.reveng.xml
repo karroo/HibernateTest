@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+
+<table-filter match-name="K_ANSWER_EXAMPLE"></table-filter>
+	<table-filter match-name="K_APP_ENCODING"></table-filter>
+	<table-filter match-name="K_CAPTION"></table-filter>
+	<table-filter match-name="K_CHANNEL"></table-filter>
+	<table-filter match-name="K_CHANNEL_ITEM"></table-filter>
+	<table-filter match-name="K_CONTENT"></table-filter>
+	<table-filter match-name="K_CONTENT_RANKING"></table-filter>
+	<table-filter match-name="K_CONTENT_SUGGESTION"></table-filter>
+	<table-filter match-name="K_CORRECT_ANSWER"></table-filter>
+	<table-filter match-name="K_CUSTOM_CHANNEL"></table-filter>
+	<table-filter match-name="K_CUSTOM_CHANNEL_BOOKMARK"></table-filter>
+	<table-filter match-name="K_DAILY_RUNNING"></table-filter>
+	<table-filter match-name="K_ENCODING"></table-filter>
+	<table-filter match-name="K_EVENT"></table-filter>
+	<table-filter match-name="K_LIVE_CAPTION"></table-filter>
+	<table-filter match-name="K_MY_VIDEO"></table-filter>
+	<table-filter match-name="K_NEWS"></table-filter>
+	<table-filter match-name="K_PERSON"></table-filter>
+	<table-filter match-name="K_PRODUCT"></table-filter>
+	<table-filter match-name="K_PROGRAM"></table-filter>
+	<table-filter match-name="K_PROGRAMMING"></table-filter>
+	<table-filter match-name="K_PROGRAM_CODE"></table-filter>
+	<table-filter match-name="K_PROGRAM_INFORMATION"></table-filter>
+	<table-filter match-name="K_QUESTION"></table-filter>
+	<table-filter match-name="K_QUIZ_PARTICIPATION"></table-filter>
+	<table-filter match-name="K_RECIPE"></table-filter>
+	<table-filter match-name="K_RELATED_CONTENT"></table-filter>
+	<table-filter match-name="K_RELATED_EVENT"></table-filter>
+	<table-filter match-name="K_RELATED_NEWS"></table-filter>
+	<table-filter match-name="K_RELATED_PERSON"></table-filter>
+	<table-filter match-name="K_RELATED_PRODUCT"></table-filter>
+	<table-filter match-name="K_RELATED_QUIZ"></table-filter>
+	<table-filter match-name="K_RELATED_RECIPE"></table-filter>
+	<table-filter match-name="K_RELATED_SHOOTING_PLACE"></table-filter>
+	<table-filter match-name="K_RELATED_SURVEY"></table-filter>
+	<table-filter match-name="K_SCRIPT"></table-filter>
+	<table-filter match-name="K_SEAMLESS"></table-filter>
+	<table-filter match-name="K_SEGMENT"></table-filter>
+	<table-filter match-name="K_SEGMENT_CODE"></table-filter>
+	<table-filter match-name="K_SEGMENT_NEWS"></table-filter>
+	<table-filter match-name="K_SHOOTING_PLACE"></table-filter>
+	<table-filter match-name="K_SURVEY_PARTICIPATION"></table-filter>
+	<table-filter match-name="K_TRANSCODING"></table-filter>
+	<table-filter match-name="K_VIDEO"></table-filter>
+	<table-filter match-name="K_VIDEO_FILE"></table-filter>
+	<table-filter match-name="T_ARTICLE"></table-filter>
+	<table-filter match-name="T_MEMBER"></table-filter>
+	<table-filter match-name="T_OBJECT"></table-filter>
+	<table-filter match-name="T_OBJECTCATEGORY"></table-filter>
+	<table schema="KBSTRI" name="K_EVENT" class="Event"></table>
+	<table schema="KBSTRI" name="K_CUSTOM_CHANNEL_BOOKMARK"
+		class="CustomChannelBookmark">
+	</table>
+	<table schema="KBSTRI" name="K_CORRECT_ANSWER"
+		class="CorrectAnswer">
+	</table>
+	<table schema="KBSTRI" name="K_QUESTION" class="Question"></table>
+	<table schema="KBSTRI" name="K_RELATED_PERSON"
+		class="RelatedPerson">
+	</table>
+	<table schema="KBSTRI" name="K_RELATED_CONTENT"
+		class="RelatedContent">
+	</table>
+	<table schema="KBSTRI" name="K_PROGRAM_CODE" class="ProgramCode"></table>
+	<table schema="KBSTRI" name="K_LIVE_CAPTION" class="LiveCaption"></table>
+	<table schema="KBSTRI" name="K_VIDEO" class="Video"></table>
+	<table schema="KBSTRI" name="K_MY_VIDEO" class="MyVideo"></table>
+	<table schema="KBSTRI" name="K_RELATED_PRODUCT"
+		class="RelatedProduct">
+	</table>
+	<table schema="KBSTRI" name="K_APP_ENCODING" class="AppEncoding"></table>
+	<table schema="KBSTRI" name="K_PERSON" class="Person"></table>
+	<table schema="KBSTRI" name="K_PROGRAM" class="Program"></table>
+	<table schema="KBSTRI" name="K_CHANNEL_ITEM" class="ChannelItem"></table>
+	<table schema="KBSTRI" name="T_MEMBER" class="Member"></table>
+	<table schema="KBSTRI" name="K_RELATED_EVENT"
+		class="RelatedEvent">
+	</table>
+	<table schema="KBSTRI" name="K_SHOOTING_PLACE"
+		class="ShootingPlace">
+	</table>
+	<table schema="KBSTRI" name="K_SEAMLESS" class="Seamless"></table>
+	<table schema="KBSTRI" name="K_APPLY_PROGRAMINFO"
+		class="ApplyProgramInfo">
+	</table>
+	<table schema="KBSTRI" name="K_SURVEY_PARTICIPATION"
+		class="SurveyParticipation">
+	</table>
+	<table schema="KBSTRI" name="K_CHANNEL" class="Channel"></table>
+	<table schema="KBSTRI" name="K_NEWS" class="News"></table>
+	<table schema="KBSTRI" name="K_SEGMENT_CODE" class="SegmentCode"></table>
+	<table schema="KBSTRI" name="K_CONTENT" class="Content"></table>
+	<table schema="KBSTRI" name="K_RELATED_SHOOTING_PLACE"
+		class="RelatedShoopingPlace">
+	</table>
+	<table schema="KBSTRI" name="K_SEGMENT" class="Segment"></table>
+	<table schema="KBSTRI" name="K_SCRIPT" class="Script"></table>
+	<table schema="KBSTRI" name="K_ANSWER_EXAMPLE"
+		class="AnswerExample">
+	</table>
+	<table schema="KBSTRI" name="K_PROGRAM_INFORMATION"
+		class="ProgramInformation">
+	</table>
+	<table schema="KBSTRI" name="K_RELATED_QUIZ" class="Quiz"></table>
+	<table schema="KBSTRI" name="K_DAILY_RUNNING"
+		class="DailyRunning">
+	</table>
+	<table schema="KBSTRI" name="K_CAPTION" class="Caption"></table>
+	<table schema="KBSTRI" name="T_OBJECTCATEGORY"
+		class="ObjectCategory">
+	</table>
+	<table schema="KBSTRI" name="K_RELATED_SURVEY"
+		class="RelatedSurvey">
+	</table>
+	<table schema="KBSTRI" name="K_QUIZ_PARTICIPATION"
+		class="QuizParticipation">
+	</table>
+	<table schema="KBSTRI" name="K_VIDEO_FILE" class="VideoFile"></table>
+	<table schema="KBSTRI" name="K_CONTENT_SUGGESTION" catalog=""
+		class="ContentSuggestion">
+	</table>
+	<table schema="KBSTRI" name="K_RELATED_RECIPE" catalog=""
+		class="RelatedRecipe">
+	</table>
+	<table schema="KBSTRI" name="K_CUSTOM_CHANNEL"
+		class="CustomChannel">
+	</table>
+	<table schema="KBSTRI" name="K_RELATED_NEWS" class="RelatedNews"></table>
+	<table schema="KBSTRI" name="T_ARTICLE" class="Article"></table>
+	<table schema="KBSTRI" name="K_PROGRAMMING" class="Programming"></table>
+	<table schema="KBSTRI" name="K_PRODUCT" class="Product"></table>
+	<table schema="KBSTRI" name="K_ENCODING" class="Encoding"></table>
+	<table schema="KBSTRI" name="K_CONTENT_RANKING"
+		class="ContentRanking">
+	</table>
+	<table schema="KBSTRI" name="T_OBJECT" class="Object"></table>
+	<table schema="KBSTRI" name="K_RECIPE" class="Recipe"></table>
+</hibernate-reverse-engineering>

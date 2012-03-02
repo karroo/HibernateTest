@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Question" schema="KBSTRI" table="K_QUESTION">
+  <id name="questionId" type="Integer">
+   <column name="QUESTION_ID" precision="0"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="point" type="Integer">
+   <column name="POINT" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="questionContents" type="serializable">
+   <column name="QUESTION_CONTENTS"/>
+  </property>
+  <property generated="never" lazy="false" name="questionType" type="string">
+   <column length="1" name="QUESTION_TYPE"/>
+  </property>
+  <set inverse="true" name="relatedQuizs" sort="unsorted">
+   <key>
+    <column name="QUESTION_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="Quiz"/>
+  </set>
+  <set inverse="true" name="answerExamples" sort="unsorted">
+   <key>
+    <column name="QUESTION_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="AnswerExample"/>
+  </set>
+  <set inverse="true" name="relatedSurveies" sort="unsorted">
+   <key>
+    <column name="QUESTION_ID" not-null="true" precision="0"/>
+   </key>
+   <one-to-many class="RelatedSurvey"/>
+  </set>
+  <set inverse="true" name="correctAnswers" sort="unsorted">
+   <key>
+    <column name="QUESTION_ID" not-null="true" precision="0" unique="true"/>
+   </key>
+   <one-to-many class="CorrectAnswer"/>
+  </set>
+ </class>
+</hibernate-mapping>

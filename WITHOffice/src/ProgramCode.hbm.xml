@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="ProgramCode" schema="KBSTRI" table="K_PROGRAM_CODE">
+  <id name="programCode" type="string">
+   <column length="10" name="PROGRAM_CODE"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Object" fetch="select" name="object">
+   <column name="OBJID" precision="0"/>
+  </many-to-one>
+  <set inverse="true" name="programs" sort="unsorted">
+   <key>
+    <column length="10" name="PROGRAM_CODE"/>
+   </key>
+   <one-to-many class="Program"/>
+  </set>
+  <set inverse="true" name="segmentCode" sort="unsorted">
+   <key>
+    <column length="10" name="PROGRAM_CODE"/>
+   </key>
+   <one-to-many class="SegmentCode"/>
+  </set>
+ </class>
+</hibernate-mapping>

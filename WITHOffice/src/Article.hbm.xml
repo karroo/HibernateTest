@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012. 3. 2 ?????? 4:45:51 by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+ <class name="Article" schema="KBSTRI" table="T_ARTICLE">
+  <id name="articleid" type="Integer">
+   <column name="ARTICLEID" precision="126" scale="0"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="ObjectCategory" fetch="select" name="objectCategory">
+   <column name="AUTHORID" precision="0"/>
+   <column name="CATEGORYID" precision="0"/>
+  </many-to-one>
+  <many-to-one class="Object" fetch="select" insert="false"
+   name="object" update="false">
+   <column name="AUTHORID" precision="0"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="pubtype" type="Integer">
+   <column name="PUBTYPE" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="sourceid" type="Integer">
+   <column name="SOURCEID" precision="126" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="title" type="string">
+   <column name="TITLE"/>
+  </property>
+  <property generated="never" lazy="false" name="articlebody" type="String">
+   <column name="ARTICLEBODY"/>
+  </property>
+  <property generated="never" lazy="false" name="commentcount" type="Integer">
+   <column name="COMMENTCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="likecount" type="Integer">
+   <column name="LIKECOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="textcount" type="Integer">
+   <column name="TEXTCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="positioncount" type="Integer">
+   <column name="POSITIONCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="filecount" type="Integer">
+   <column name="FILECOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="photocount" type="Integer">
+   <column name="PHOTOCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="contentscount" type="Integer">
+   <column name="CONTENTSCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="ishide" type="Boolean">
+   <column length="1" name="ISHIDE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="regdate" type="timestamp">
+   <column length="7" name="REGDATE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="lastphotoid" type="Integer">
+   <column name="LASTPHOTOID" precision="126" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="lastposid" type="Integer">
+   <column name="LASTPOSID" precision="126" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="lastfileid" type="Integer">
+   <column name="LASTFILEID" precision="126" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="lasttextid" type="Integer">
+   <column name="LASTTEXTID" precision="126" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="lastcontentsid" type="Integer">
+   <column name="LASTCONTENTSID" precision="126" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="statuscode" type="Integer">
+   <column name="STATUSCODE" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="urlcount" type="Integer">
+   <column name="URLCOUNT" not-null="true" precision="0"/>
+  </property>
+  <property generated="never" lazy="false" name="lasturlid" type="Integer">
+   <column name="LASTURLID" precision="126" scale="0"/>
+  </property>
+  <set inverse="true" name="contents" sort="unsorted">
+   <key>
+    <column name="ARTICLEID" precision="0"/>
+   </key>
+   <one-to-many class="Content"/>
+  </set>
+ </class>
+</hibernate-mapping>
