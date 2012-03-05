@@ -12,6 +12,7 @@ public class HibernateUtil {
 			sessionFactory = new AnnotationConfiguration().configure("/conf/hibernate.cfg.xml").buildSessionFactory();
 			
 		}catch(Throwable ex){
+			ex.printStackTrace();
 			throw new ExceptionInInitializerError(ex);
 		}
 	}

@@ -1,5 +1,5 @@
 // default package
-// Generated 2012. 3. 2 오후 8:12:59 by Hibernate Tools 3.2.0.beta8
+// Generated 2012. 3. 5 오후 1:52:33 by Hibernate Tools 3.2.0.beta8
 
 
 import java.util.HashSet;

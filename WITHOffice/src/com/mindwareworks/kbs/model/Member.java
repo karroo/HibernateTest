@@ -198,7 +198,7 @@ public class Member  implements java.io.Serializable {
     public void setFollowercount(BigDecimal followercount) {
         this.followercount = followercount;
     }
-    @ManyToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="customChannelBookmark")
+    @ManyToMany(mappedBy="bookmarkingMembers")
     public Set<CustomChannel> getCustomChannelBookmark() {
         return this.customChannelBookmark;
     }

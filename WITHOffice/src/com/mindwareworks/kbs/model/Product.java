@@ -10,6 +10,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,6 +27,7 @@ public class Product  implements java.io.Serializable {
 
     // Fields    
 
+	
      private Integer productId;
      private String productName;
      private String mainImagePath;
@@ -33,7 +37,7 @@ public class Product  implements java.io.Serializable {
      private String sponsorName;
      private String sponsorUrl;
      private String purchaseUrl;
-     private Set<RelatedProduct> relatedProducts = new HashSet<RelatedProduct>(0);
+     private Set<Content> contents;
 
      // Constructors
 
@@ -45,20 +49,7 @@ public class Product  implements java.io.Serializable {
     public Product(Integer productId) {
         this.productId = productId;
     }
-    /** full constructor */
-    public Product(Integer productId, String productName, String mainImagePath, String detailImagePath, String productDescription, Integer productPrice, String sponsorName, String sponsorUrl, String purchaseUrl, Set<RelatedProduct> relatedProducts) {
-       this.productId = productId;
-       this.productName = productName;
-       this.mainImagePath = mainImagePath;
-       this.detailImagePath = detailImagePath;
-       this.productDescription = productDescription;
-       this.productPrice = productPrice;
-       this.sponsorName = sponsorName;
-       this.sponsorUrl = sponsorUrl;
-       this.purchaseUrl = purchaseUrl;
-       this.relatedProducts = relatedProducts;
-    }
-   
+    
     // Property accessors
      @Id
     
@@ -142,16 +133,17 @@ public class Product  implements java.io.Serializable {
     public void setPurchaseUrl(String purchaseUrl) {
         this.purchaseUrl = purchaseUrl;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="product")
-    public Set<RelatedProduct> getRelatedProducts() {
-        return this.relatedProducts;
-    }
+
+    @ManyToMany(fetch=FetchType.LAZY,mappedBy="relatedProducts")
+    //@org.hibernate.annotations.BatchSize(size=10)
+	public Set<Content> getContents() {
+		return contents;
+	}
+
+	public void setContents(Set<Content> contents) {
+		this.contents = contents;
+	}
     
-    public void setRelatedProducts(Set<RelatedProduct> relatedProducts) {
-        this.relatedProducts = relatedProducts;
-    }
-
-
 
 
 }

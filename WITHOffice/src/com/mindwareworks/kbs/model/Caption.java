@@ -5,10 +5,10 @@ package com.mindwareworks.kbs.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name="K_CAPTION"
     ,schema="KBSTRI"
 )
+@SecondaryTable(name="K_RELATED_CAPTION")
 public class Caption  implements java.io.Serializable {
 
     // Fields    
@@ -58,10 +59,8 @@ public class Caption  implements java.io.Serializable {
     public void setCaptionId(Integer captionId) {
         this.captionId = captionId;
     }
-@ManyToOne(cascade={},
-        fetch=FetchType.LAZY)
-    
-    @JoinColumn(name="CONTENT_ID", unique=false, nullable=true, insertable=true, updatable=true)
+    @ManyToOne
+    @JoinColumn(table="K_RELATED_CAPTION",name="CONTENT_ID")
     public Content getContent() {
         return this.content;
     }

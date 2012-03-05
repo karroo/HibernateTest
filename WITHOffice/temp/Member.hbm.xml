@@ -42,7 +42,7 @@
   <property generated="never" lazy="false" name="followercount" type="big_decimal">
    <column name="FOLLOWERCOUNT" not-null="true" precision="0"/>
   </property>
-  <set inverse="true" name="customChannelBookmark" sort="unsorted" table="K_CUSTOM_CHANNEL_BOOKMARK">
+  <set inverse="true" name="bookmarkedCustomerChannels" sort="unsorted" table="K_CUSTOM_CHANNEL_BOOKMARK">
    <key>
     <column name="MEMBERID" not-null="true" precision="0"/>
    </key>

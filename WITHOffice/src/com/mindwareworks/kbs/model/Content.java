@@ -12,9 +12,11 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,8 +34,8 @@ public class Content  implements java.io.Serializable {
      private Article article;
      private ObjectCategory objectCategory;
      private String contentKind;
-     private Set<Caption> captions = new HashSet<Caption>(0);
-     private Set<Script> scripts = new HashSet<Script>(0);
+     private Caption caption;
+     private Script script;
      private Set<ContentRanking> contentRankings = new HashSet<ContentRanking>(0);
      private Set<Member> contentSuggestion = new HashSet<Member>(0);
      private Set<Seamless> seamlesses = new HashSet<Seamless>(0);
@@ -49,7 +51,7 @@ public class Content  implements java.io.Serializable {
      private Set<RelatedNews> relatedNewses = new HashSet<RelatedNews>(0);
      private Set<RelatedRecipe> relatedRecipes = new HashSet<RelatedRecipe>(0);
      private Set<RelatedShoopingPlace> relatedShootingPlaces = new HashSet<RelatedShoopingPlace>(0);
-     private Set<RelatedProduct> relatedProducts = new HashSet<RelatedProduct>(0);
+     private Set<Product> relatedProducts = new HashSet<Product>(0);
      private Set<Video> videos = new HashSet<Video>(0);
 
      // Constructors
@@ -61,32 +63,6 @@ public class Content  implements java.io.Serializable {
 	/** minimal constructor */
     public Content(String contentId) {
         this.contentId = contentId;
-    }
-    /** full constructor */
-    public Content(String contentId, Article article, ObjectCategory objectCategory, String contentKind, Set<Caption> captions, Set<Script> scripts, Set<ContentRanking> contentRankings, Set<Member> contentSuggestion, Set<Seamless> seamlesses, Set<Program> programs, Set<Segment> segments, Set<Event> events, Set<ChannelItem> channelItems, Set<Member> myVideo, Set<Quiz> relatedQuizs, Set<RelatedSurvey> relatedSurveies, Set<RelatedContent> relatedContents, Set<RelatedPerson> relatedPersons, Set<RelatedNews> relatedNewses, Set<RelatedRecipe> relatedRecipes, Set<RelatedShoopingPlace> relatedShootingPlaces, Set<RelatedProduct> relatedProducts, Set<Video> videos) {
-       this.contentId = contentId;
-       this.article = article;
-       this.objectCategory = objectCategory;
-       this.contentKind = contentKind;
-       this.captions = captions;
-       this.scripts = scripts;
-       this.contentRankings = contentRankings;
-       this.contentSuggestion = contentSuggestion;
-       this.seamlesses = seamlesses;
-       this.programs = programs;
-       this.segments = segments;
-       this.events = events;
-       this.channelItems = channelItems;
-       this.myVideo = myVideo;
-       this.relatedQuizs = relatedQuizs;
-       this.relatedSurveies = relatedSurveies;
-       this.relatedContents = relatedContents;
-       this.relatedPersons = relatedPersons;
-       this.relatedNewses = relatedNewses;
-       this.relatedRecipes = relatedRecipes;
-       this.relatedShootingPlaces = relatedShootingPlaces;
-       this.relatedProducts = relatedProducts;
-       this.videos = videos;
     }
    
     // Property accessors
@@ -133,21 +109,32 @@ public class Content  implements java.io.Serializable {
     public void setContentKind(String contentKind) {
         this.contentKind = contentKind;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
-    public Set<Caption> getCaptions() {
-        return this.captions;
+    
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinTable(
+    		name="K_RELATED_CAPTION",
+    		joinColumns = {@JoinColumn(name="content_id")},
+    		inverseJoinColumns = {@JoinColumn(name="caption_id")}
+    )
+    public Caption getCaption() {
+        return this.caption;
     }
     
-    public void setCaptions(Set<Caption> captions) {
-        this.captions = captions;
+    public void setCaption(Caption caption) {
+        this.caption = caption;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
-    public Set<Script> getScripts() {
-        return this.scripts;
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinTable(
+    		name="K_RELATED_SCRIPT",
+    		joinColumns = {@JoinColumn(name="content_id")},
+    		inverseJoinColumns = {@JoinColumn(name="script_id")}
+    )
+    public Script getScript() {
+        return this.script;
     }
     
-    public void setScripts(Set<Script> scripts) {
-        this.scripts = scripts;
+    public void setScript(Script script) {
+        this.script = script;
     }
     @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
     public Set<ContentRanking> getContentRankings() {
@@ -157,7 +144,13 @@ public class Content  implements java.io.Serializable {
     public void setContentRankings(Set<ContentRanking> contentRankings) {
         this.contentRankings = contentRankings;
     }
-    @ManyToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="myVideos")
+    @ManyToMany
+    @JoinTable(
+    		name="K_CONTENT_SUGGESTION",
+    		joinColumns={@JoinColumn(name="content_id")},
+    		inverseJoinColumns ={@JoinColumn(name="memberId")}
+    		
+    )
     public Set<Member> getContentSuggestion() {
         return this.contentSuggestion;
     }
@@ -189,7 +182,12 @@ public class Content  implements java.io.Serializable {
     public void setSegments(Set<Segment> segments) {
         this.segments = segments;
     }
-    @ManyToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="contents")
+    @ManyToMany
+    @JoinTable(
+    		name="K_REALATED_EVENT",
+    		joinColumns = {@JoinColumn(name="content_id")},
+    		inverseJoinColumns = {@JoinColumn(name="event_id")}
+    )
     public Set<Event> getEvents() {
         return this.events;
     }
@@ -269,12 +267,18 @@ public class Content  implements java.io.Serializable {
     public void setRelatedShootingPlaces(Set<RelatedShoopingPlace> relatedShootingPlaces) {
         this.relatedShootingPlaces = relatedShootingPlaces;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
-    public Set<RelatedProduct> getRelatedProducts() {
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(
+    		name="K_RELATED_PRODUCT",
+    		joinColumns = {@JoinColumn(name="content_id")},
+    		inverseJoinColumns = {@JoinColumn(name="product_id")}
+    )
+    @org.hibernate.annotations.BatchSize(size=10)
+    public Set<Product> getRelatedProducts() {
         return this.relatedProducts;
     }
     
-    public void setRelatedProducts(Set<RelatedProduct> relatedProducts) {
+    public void setRelatedProducts(Set<Product> relatedProducts) {
         this.relatedProducts = relatedProducts;
     }
     @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")

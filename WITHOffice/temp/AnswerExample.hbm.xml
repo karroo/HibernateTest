@@ -5,10 +5,13 @@
 <hibernate-mapping>
  <class name="AnswerExample" schema="KBSTRI" table="K_ANSWER_EXAMPLE">
   <composite-id class="AnswerExampleId" mapped="false" name="id" unsaved-value="undefined">
+   <meta attribute="use-in-tostring">true</meta>
    <key-property name="questionId" type="Integer">
+    <meta attribute="use-in-tostring">true</meta>
     <column name="QUESTION_ID" precision="0"/>
    </key-property>
    <key-property name="exampleNumber" type="Integer">
+    <meta attribute="use-in-tostring">true</meta>
     <column name="EXAMPLE_NUMBER" precision="0"/>
    </key-property>
   </composite-id>
@@ -17,6 +20,7 @@
    <column name="QUESTION_ID" not-null="true" precision="0"/>
   </many-to-one>
   <property generated="never" lazy="false" name="example" type="string">
+   <meta attribute="use-in-tostring">true</meta>
    <column name="EXAMPLE"/>
   </property>
  </class>

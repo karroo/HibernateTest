@@ -1,18 +1,14 @@
 package com.mindwareworks.com;
 
 import java.util.List;
-import java.util.Set;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.mindwareworks.kbs.model.Content;
 import com.mindwareworks.kbs.model.Program;
-import com.mindwareworks.kbs.model.ProgramCode;
 import com.mindwareworks.kbs.util.HibernateUtil;
 
 
@@ -21,16 +17,22 @@ public class BaseTest {
 	static Session session;
 	@BeforeClass
 	public static void createSession(){
-		session = HibernateUtil.getSessionFactory().openSession();
+		try{
+			session = HibernateUtil.getSessionFactory().openSession();
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
 	}
 	
 	@Test
 	public void getProgram(){
 		Transaction tx  = session.beginTransaction();
-		List<Program> programs = session.createQuery("from Program where contentId =441310").list();
+		List<Program> programs = session.createQuery("from Program where rownum=1").list();
 		System.out.println(programs.get(0).getContentId());
 		tx.commit();
 	}
+	/*
 	@Test
 	public void createProgram(){
 		Transaction tx = session.beginTransaction();
@@ -72,7 +74,7 @@ public class BaseTest {
 		System.out.println(programs);
 		
 		tx.commit();
-	}
+	}*/
 	
 	@AfterClass
 	public static void closeSession(){

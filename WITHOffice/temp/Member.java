@@ -1,5 +1,5 @@
 // default package
-// Generated 2012. 3. 2 오후 8:12:59 by Hibernate Tools 3.2.0.beta8
+// Generated 2012. 3. 5 오후 1:52:33 by Hibernate Tools 3.2.0.beta8
 
 
 import java.math.BigDecimal;
@@ -38,7 +38,7 @@ public class Member  implements java.io.Serializable {
      private String joinclubcount;
      private Integer followingcount;
      private BigDecimal followercount;
-     private Set<CustomChannel> customChannelBookmark = new HashSet<CustomChannel>(0);
+     private Set<CustomChannel> bookmarkedCustomerChannels = new HashSet<CustomChannel>(0);
      private Set<SurveyParticipation> surveyParticipations = new HashSet<SurveyParticipation>(0);
      private Set<QuizParticipation> quizParticipations = new HashSet<QuizParticipation>(0);
      private Set<ProgramInformation> programInformations = new HashSet<ProgramInformation>(0);
@@ -63,7 +63,7 @@ public class Member  implements java.io.Serializable {
         this.followercount = followercount;
     }
     /** full constructor */
-    public Member(Integer memberid, Object TObject, String authkey, String loginid, String loginpwd, String name, Integer articlenewscount, String friendnewscount, String friendcount, String joinclubcount, Integer followingcount, BigDecimal followercount, Set<CustomChannel> customChannelBookmark, Set<SurveyParticipation> surveyParticipations, Set<QuizParticipation> quizParticipations, Set<ProgramInformation> programInformations, Set<Content> myVideos, Set<Content> contentSuggestion) {
+    public Member(Integer memberid, Object TObject, String authkey, String loginid, String loginpwd, String name, Integer articlenewscount, String friendnewscount, String friendcount, String joinclubcount, Integer followingcount, BigDecimal followercount, Set<CustomChannel> bookmarkedCustomerChannels, Set<SurveyParticipation> surveyParticipations, Set<QuizParticipation> quizParticipations, Set<ProgramInformation> programInformations, Set<Content> myVideos, Set<Content> contentSuggestion) {
        this.memberid = memberid;
        this.TObject = TObject;
        this.authkey = authkey;
@@ -76,7 +76,7 @@ public class Member  implements java.io.Serializable {
        this.joinclubcount = joinclubcount;
        this.followingcount = followingcount;
        this.followercount = followercount;
-       this.customChannelBookmark = customChannelBookmark;
+       this.bookmarkedCustomerChannels = bookmarkedCustomerChannels;
        this.surveyParticipations = surveyParticipations;
        this.quizParticipations = quizParticipations;
        this.programInformations = programInformations;
@@ -196,13 +196,13 @@ public class Member  implements java.io.Serializable {
     public void setFollowercount(BigDecimal followercount) {
         this.followercount = followercount;
     }
-    @ManyToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="customChannelBookmark")
-    public Set<CustomChannel> getCustomChannelBookmark() {
-        return this.customChannelBookmark;
+    @ManyToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="bookmarkingMembers")
+    public Set<CustomChannel> getBookmarkedCustomerChannels() {
+        return this.bookmarkedCustomerChannels;
     }
     
-    public void setCustomChannelBookmark(Set<CustomChannel> customChannelBookmark) {
-        this.customChannelBookmark = customChannelBookmark;
+    public void setBookmarkedCustomerChannels(Set<CustomChannel> bookmarkedCustomerChannels) {
+        this.bookmarkedCustomerChannels = bookmarkedCustomerChannels;
     }
     @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="member")
     public Set<SurveyParticipation> getSurveyParticipations() {

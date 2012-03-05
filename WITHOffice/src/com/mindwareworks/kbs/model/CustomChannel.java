@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -36,7 +37,7 @@ public class CustomChannel  implements java.io.Serializable {
      private String registrationDateTime;
      private String channelMainImagePath;
      private String openYn;
-     private Set<Member> customChannelBookmark = new HashSet<Member>(0);
+     private Set<Member> bookmarkingMembers = new HashSet<Member>(0);
      private Set<ChannelItem> channelItems = new HashSet<ChannelItem>(0);
 
      // Constructors
@@ -50,7 +51,7 @@ public class CustomChannel  implements java.io.Serializable {
         this.channelId = channelId;
     }
     /** full constructor */
-    public CustomChannel(Integer channelId, Member member, String channelTitle, String channelDescription, BigDecimal bookmarkCount, String registrationDateTime, String channelMainImagePath, String openYn, Set<Member> customChannelBookmark, Set<ChannelItem> channelItems) {
+    public CustomChannel(Integer channelId, Member member, String channelTitle, String channelDescription, BigDecimal bookmarkCount, String registrationDateTime, String channelMainImagePath, String openYn, Set<Member> bookmarkingMembers, Set<ChannelItem> channelItems) {
        this.channelId = channelId;
        this.member = member;
        this.channelTitle = channelTitle;
@@ -59,7 +60,7 @@ public class CustomChannel  implements java.io.Serializable {
        this.registrationDateTime = registrationDateTime;
        this.channelMainImagePath = channelMainImagePath;
        this.openYn = openYn;
-       this.customChannelBookmark = customChannelBookmark;
+       this.bookmarkingMembers = bookmarkingMembers;
        this.channelItems = channelItems;
     }
    
@@ -139,13 +140,17 @@ public class CustomChannel  implements java.io.Serializable {
     public void setOpenYn(String openYn) {
         this.openYn = openYn;
     }
-    @ManyToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="customChannelBookmark")
-    public Set<Member> getCustomChannelBookmark() {
-        return this.customChannelBookmark;
+    @ManyToMany
+    @JoinTable(
+    		name="K_CUSTOM_CHANNEL_BOOKMARK",
+    		joinColumns ={@JoinColumn(name="channel_id")},inverseJoinColumns = {@JoinColumn(name="memberId")}
+    )
+    public Set<Member> getBookmarkingMembers() {
+        return this.bookmarkingMembers;
     }
     
-    public void setCustomChannelBookmark(Set<Member> customChannelBookmark) {
-        this.customChannelBookmark = customChannelBookmark;
+    public void setBookmarkingMembers(Set<Member> bookmarkingMembers) {
+        this.bookmarkingMembers = bookmarkingMembers;
     }
     @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="customChannel")
     public Set<ChannelItem> getChannelItems() {

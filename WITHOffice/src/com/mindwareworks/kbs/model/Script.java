@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +19,7 @@ import javax.persistence.Table;
 @Table(name="K_SCRIPT"
     ,schema="KBSTRI"
 )
+@SecondaryTable(name="K_RELATED_SCRIPT")
 public class Script  implements java.io.Serializable {
 
     // Fields    
@@ -58,10 +60,9 @@ public class Script  implements java.io.Serializable {
     public void setScriptId(Integer scriptId) {
         this.scriptId = scriptId;
     }
-@ManyToOne(cascade={},
-        fetch=FetchType.LAZY)
     
-    @JoinColumn(name="CONTENT_ID", unique=false, nullable=true, insertable=true, updatable=true)
+	@ManyToOne
+	@JoinColumn(table="K_RELATED_SCRIPT",name="CONTENT_ID")
     public Content getContent() {
         return this.content;
     }

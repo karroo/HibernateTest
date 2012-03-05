@@ -49,7 +49,20 @@ public class AnswerExampleId  implements java.io.Serializable {
         this.exampleNumber = exampleNumber;
     }
 
+    /**
+     * toString
+     * @return String
+     */
+     public String toString() {
+	  StringBuffer buffer = new StringBuffer();
 
+      buffer.append("[");
+      buffer.append("questionId").append("='").append(getQuestionId()).append("' ");			
+      buffer.append("exampleNumber").append("='").append(getExampleNumber()).append("' ");			
+      buffer.append("]");
+      
+      return buffer.toString();
+     }
 
 
 }

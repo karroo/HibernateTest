@@ -29,7 +29,7 @@
   <property generated="never" lazy="false" name="openYn" type="string">
    <column length="1" name="OPEN_YN"/>
   </property>
-  <set inverse="true" name="customChannelBookmark" sort="unsorted" table="K_CUSTOM_CHANNEL_BOOKMARK">
+  <set name="bookmarkingMembers" sort="unsorted" table="K_CUSTOM_CHANNEL_BOOKMARK">
    <key>
     <column name="CHANNEL_ID" not-null="true" precision="0"/>
    </key>

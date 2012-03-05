@@ -5,13 +5,16 @@
 <hibernate-mapping>
  <class name="Question" schema="KBSTRI" table="K_QUESTION">
   <id name="questionId" type="Integer">
+   <meta attribute="use-in-tostring">true</meta>
    <column name="QUESTION_ID" precision="0"/>
    <generator class="assigned"/>
   </id>
   <property generated="never" lazy="false" name="point" type="Integer">
+   <meta attribute="use-in-tostring">true</meta>
    <column name="POINT" precision="0"/>
   </property>
   <property generated="never" lazy="false" name="questionContents" type="serializable">
+   <meta attribute="use-in-tostring">true</meta>
    <column name="QUESTION_CONTENTS"/>
   </property>
   <property generated="never" lazy="false" name="questionType" type="string">

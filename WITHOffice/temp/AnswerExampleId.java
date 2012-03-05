@@ -1,5 +1,5 @@
 // default package
-// Generated 2012. 3. 2 오후 8:12:59 by Hibernate Tools 3.2.0.beta8
+// Generated 2012. 3. 5 오후 1:52:33 by Hibernate Tools 3.2.0.beta8
 
 
 import javax.persistence.Column;
@@ -48,6 +48,20 @@ public class AnswerExampleId  implements java.io.Serializable {
         this.exampleNumber = exampleNumber;
     }
 
+    /**
+     * toString
+     * @return String
+     */
+     public String toString() {
+	  StringBuffer buffer = new StringBuffer();
+
+      buffer.append(getClass().getName()).append("@").append(Integer.toHexString(hashCode())).append(" [");
+      buffer.append("questionId").append("='").append(getQuestionId()).append("' ");			
+      buffer.append("exampleNumber").append("='").append(getExampleNumber()).append("' ");			
+      buffer.append("]");
+      
+      return buffer.toString();
+     }
 
 
 
