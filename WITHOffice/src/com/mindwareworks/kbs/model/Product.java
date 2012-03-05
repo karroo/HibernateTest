@@ -23,6 +23,7 @@ import javax.persistence.Table;
 @Table(name="K_PRODUCT"
     ,schema="KBSTRI"
 )
+@org.hibernate.annotations.BatchSize(size=10)
 public class Product  implements java.io.Serializable {
 
     // Fields    
@@ -37,7 +38,7 @@ public class Product  implements java.io.Serializable {
      private String sponsorName;
      private String sponsorUrl;
      private String purchaseUrl;
-     private Set<Content> contents;
+     private Set<RelatedProduct> relatedProducts = new HashSet<RelatedProduct>(0);
 
      // Constructors
 
@@ -133,17 +134,18 @@ public class Product  implements java.io.Serializable {
     public void setPurchaseUrl(String purchaseUrl) {
         this.purchaseUrl = purchaseUrl;
     }
-
-    @ManyToMany(fetch=FetchType.LAZY,mappedBy="relatedProducts")
-    //@org.hibernate.annotations.BatchSize(size=10)
-	public Set<Content> getContents() {
-		return contents;
-	}
-
-	public void setContents(Set<Content> contents) {
-		this.contents = contents;
-	}
     
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
+	public Set<RelatedProduct> getRelatedProducts() {
+		return relatedProducts;
+	}
+
+	public void setRelatedProducts(Set<RelatedProduct> relatedProducts) {
+		this.relatedProducts = relatedProducts;
+	}
+
+	
 
 
 }

@@ -26,6 +26,7 @@ import javax.persistence.Table;
 @Table(name="K_CONTENT"
     ,schema="KBSTRI"
 )
+@org.hibernate.annotations.BatchSize(size=10)
 public class Content  implements java.io.Serializable {
 
     // Fields    
@@ -51,7 +52,7 @@ public class Content  implements java.io.Serializable {
      private Set<RelatedNews> relatedNewses = new HashSet<RelatedNews>(0);
      private Set<RelatedRecipe> relatedRecipes = new HashSet<RelatedRecipe>(0);
      private Set<RelatedShoopingPlace> relatedShootingPlaces = new HashSet<RelatedShoopingPlace>(0);
-     private Set<Product> relatedProducts = new HashSet<Product>(0);
+     private Set<RelatedProduct> relatedProducts = new HashSet<RelatedProduct>(0);
      private Set<Video> videos = new HashSet<Video>(0);
 
      // Constructors
@@ -267,18 +268,13 @@ public class Content  implements java.io.Serializable {
     public void setRelatedShootingPlaces(Set<RelatedShoopingPlace> relatedShootingPlaces) {
         this.relatedShootingPlaces = relatedShootingPlaces;
     }
-    @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(
-    		name="K_RELATED_PRODUCT",
-    		joinColumns = {@JoinColumn(name="content_id")},
-    		inverseJoinColumns = {@JoinColumn(name="product_id")}
-    )
-    @org.hibernate.annotations.BatchSize(size=10)
-    public Set<Product> getRelatedProducts() {
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
+    public Set<RelatedProduct> getRelatedProducts() {
         return this.relatedProducts;
     }
     
-    public void setRelatedProducts(Set<Product> relatedProducts) {
+    public void setRelatedProducts(Set<RelatedProduct> relatedProducts) {
         this.relatedProducts = relatedProducts;
     }
     @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
