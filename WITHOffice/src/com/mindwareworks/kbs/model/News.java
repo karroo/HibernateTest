@@ -109,7 +109,7 @@ public class News  implements java.io.Serializable {
     public void setArticleUrl(String articleUrl) {
         this.articleUrl = articleUrl;
     }
-    @OneToMany(mappedBy="content")
+    @OneToMany(mappedBy="news")
     @org.hibernate.annotations.BatchSize(size=10)
     public Set<RelatedNews> getRelatedNewses() {
         return this.relatedNewses;

@@ -143,7 +143,7 @@ public class Recipe  implements java.io.Serializable {
     public void setIngredientDetail(String ingredientDetail) {
         this.ingredientDetail = ingredientDetail;
     }
-    @OneToMany(mappedBy="content")
+    @OneToMany(mappedBy="recipe")
     @org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
     public Set<RelatedRecipe> getRelatedRecipes() {
         return this.relatedRecipes;

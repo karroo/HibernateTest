@@ -27,7 +27,7 @@ public class Seamless  implements java.io.Serializable {
      private SeamlessId id;
      private Content content;
      private Integer lastViewingStartTime;
-     private Integer lastViewingDateTime;
+     private String lastViewingDateTime;
 
      // Constructors
 
@@ -41,7 +41,7 @@ public class Seamless  implements java.io.Serializable {
         this.content = content;
     }
     /** full constructor */
-    public Seamless(SeamlessId id, Content content, Integer lastViewingStartTime, Integer lastViewingDateTime) {
+    public Seamless(SeamlessId id, Content content, Integer lastViewingStartTime, String lastViewingDateTime) {
        this.id = id;
        this.content = content;
        this.lastViewingStartTime = lastViewingStartTime;
@@ -50,7 +50,6 @@ public class Seamless  implements java.io.Serializable {
    
     // Property accessors
      @EmbeddedId
-    
     @AttributeOverrides( {
         @AttributeOverride(name="objid", column=@Column(name="OBJID", unique=false, nullable=false, insertable=true, updatable=true, precision=0) ), 
         @AttributeOverride(name="deviceid", column=@Column(name="DEVICEID", unique=false, nullable=false, insertable=true, updatable=true, precision=0) ), 
@@ -84,11 +83,11 @@ public class Seamless  implements java.io.Serializable {
     }
     
     @Column(name="LAST_VIEWING_DATE_TIME", unique=false, nullable=true, insertable=true, updatable=true, length=14)
-    public Integer getLastViewingDateTime() {
+    public String getLastViewingDateTime() {
         return this.lastViewingDateTime;
     }
     
-    public void setLastViewingDateTime(Integer lastViewingDateTime) {
+    public void setLastViewingDateTime(String lastViewingDateTime) {
         this.lastViewingDateTime = lastViewingDateTime;
     }
 

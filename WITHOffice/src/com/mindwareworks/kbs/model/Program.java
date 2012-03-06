@@ -22,6 +22,7 @@ import javax.persistence.Table;
 @Table(name="K_PROGRAM"
     ,schema="KBSTRI"
 )
+@org.hibernate.annotations.BatchSize(size=20)
 public class Program  implements java.io.Serializable {
 
     // Fields    

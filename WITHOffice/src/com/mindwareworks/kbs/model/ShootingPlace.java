@@ -31,7 +31,7 @@ public class ShootingPlace  implements java.io.Serializable {
      private String shootingPlaceDetail;
      private String shootingPlaceImagePath;
      private Integer posid;
-     private Set<RelatedShoopingPlace> KRelatedShootingPlaces = new HashSet<RelatedShoopingPlace>(0);
+     private Set<RelatedShoopingPlace> relatedShootingPlaces = new HashSet<RelatedShoopingPlace>(0);
 
      // Constructors
 
@@ -44,7 +44,7 @@ public class ShootingPlace  implements java.io.Serializable {
         this.placeId = placeId;
     }
     /** full constructor */
-    public ShootingPlace(Integer placeId, String shootingPlace, String shootingPlaceTransportation, String shootingPlaceContact, String shootingPlaceDetail, String shootingPlaceImagePath, Integer posid, Set<RelatedShoopingPlace> KRelatedShootingPlaces) {
+    public ShootingPlace(Integer placeId, String shootingPlace, String shootingPlaceTransportation, String shootingPlaceContact, String shootingPlaceDetail, String shootingPlaceImagePath, Integer posid, Set<RelatedShoopingPlace> relatedShootingPlaces) {
        this.placeId = placeId;
        this.shootingPlace = shootingPlace;
        this.shootingPlaceTransportation = shootingPlaceTransportation;
@@ -52,7 +52,7 @@ public class ShootingPlace  implements java.io.Serializable {
        this.shootingPlaceDetail = shootingPlaceDetail;
        this.shootingPlaceImagePath = shootingPlaceImagePath;
        this.posid = posid;
-       this.KRelatedShootingPlaces = KRelatedShootingPlaces;
+       this.relatedShootingPlaces = relatedShootingPlaces;
     }
    
     // Property accessors
@@ -120,14 +120,14 @@ public class ShootingPlace  implements java.io.Serializable {
     public void setPosid(Integer posid) {
         this.posid = posid;
     }
-    @OneToMany(mappedBy="content")
+    @OneToMany(mappedBy="shootingPlace")
     @org.hibernate.annotations.BatchSize(size=10)
-    public Set<RelatedShoopingPlace> getKRelatedShootingPlaces() {
-        return this.KRelatedShootingPlaces;
+    public Set<RelatedShoopingPlace> getRelatedShootingPlaces() {
+        return this.relatedShootingPlaces;
     }
     
-    public void setKRelatedShootingPlaces(Set<RelatedShoopingPlace> KRelatedShootingPlaces) {
-        this.KRelatedShootingPlaces = KRelatedShootingPlaces;
+    public void setRelatedShootingPlaces(Set<RelatedShoopingPlace> relatedShootingPlaces) {
+        this.relatedShootingPlaces = relatedShootingPlaces;
     }
 
 

@@ -135,7 +135,7 @@ public class Product  implements java.io.Serializable {
         this.purchaseUrl = purchaseUrl;
     }
     
-    @OneToMany(mappedBy="content")
+    @OneToMany(mappedBy="product")
     @org.hibernate.annotations.BatchSize(size=10)
 	public Set<RelatedProduct> getRelatedProducts() {
 		return relatedProducts;

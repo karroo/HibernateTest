@@ -18,8 +18,8 @@ public class SeamlessId  implements java.io.Serializable {
      private Integer deviceid;
      private Integer contentId;
 
-     // Constructors
 
+     // Constructors
     /** default constructor */
     public SeamlessId() {
     }
