@@ -136,7 +136,7 @@ public class Product  implements java.io.Serializable {
     }
     
     @OneToMany(mappedBy="content")
-    @org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
+    @org.hibernate.annotations.BatchSize(size=10)
 	public Set<RelatedProduct> getRelatedProducts() {
 		return relatedProducts;
 	}

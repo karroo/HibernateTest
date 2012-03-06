@@ -64,10 +64,8 @@ public class RelatedRecipe  implements java.io.Serializable {
     public void setId(RelatedRecipeId id) {
         this.id = id;
     }
-@ManyToOne(cascade={},
-        fetch=FetchType.LAZY)
-    
-    @JoinColumn(name="RECIPE_ID", unique=false, nullable=false, insertable=false, updatable=false)
+    @ManyToOne(cascade = {}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "RECIPE_ID", unique = false, nullable = false, insertable = false, updatable = false)
     public Recipe getRecipe() {
         return this.recipe;
     }
@@ -75,10 +73,9 @@ public class RelatedRecipe  implements java.io.Serializable {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
-@ManyToOne(cascade={},
-        fetch=FetchType.LAZY)
     
-    @JoinColumn(name="CONTENT_ID", unique=false, nullable=false, insertable=false, updatable=false)
+    @ManyToOne(cascade = {}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "CONTENT_ID", unique = false, nullable = false, insertable = false, updatable = false)
     public Content getContent() {
         return this.content;
     }

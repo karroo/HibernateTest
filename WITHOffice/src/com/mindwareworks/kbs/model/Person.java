@@ -88,7 +88,9 @@ public class Person  implements java.io.Serializable {
     public void setDescription(Serializable description) {
         this.description = description;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="person")
+    
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size=10)
     public Set<RelatedPerson> getRelatedPersons() {
         return this.relatedPersons;
     }

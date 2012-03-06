@@ -120,7 +120,8 @@ public class ShootingPlace  implements java.io.Serializable {
     public void setPosid(Integer posid) {
         this.posid = posid;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="shootingPlace")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size=10)
     public Set<RelatedShoopingPlace> getKRelatedShootingPlaces() {
         return this.KRelatedShootingPlaces;
     }

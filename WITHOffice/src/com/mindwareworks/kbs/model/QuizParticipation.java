@@ -27,7 +27,7 @@ public class QuizParticipation  implements java.io.Serializable {
 
      private QuizParticipationId id;
      private Member member;
-     private Quiz relatedQuiz;
+     private RelatedQuiz relatedQuiz;
      private String answer;
 
      // Constructors
@@ -37,13 +37,13 @@ public class QuizParticipation  implements java.io.Serializable {
     }
 
 	/** minimal constructor */
-    public QuizParticipation(QuizParticipationId id, Member member, Quiz relatedQuiz) {
+    public QuizParticipation(QuizParticipationId id, Member member, RelatedQuiz relatedQuiz) {
         this.id = id;
         this.member = member;
         this.relatedQuiz = relatedQuiz;
     }
     /** full constructor */
-    public QuizParticipation(QuizParticipationId id, Member member, Quiz relatedQuiz, String answer) {
+    public QuizParticipation(QuizParticipationId id, Member member, RelatedQuiz relatedQuiz, String answer) {
        this.id = id;
        this.member = member;
        this.relatedQuiz = relatedQuiz;
@@ -81,11 +81,11 @@ public class QuizParticipation  implements java.io.Serializable {
     @JoinColumns( { 
         @JoinColumn(name="QUESTION_ID", unique=false, nullable=false, insertable=false, updatable=false), 
         @JoinColumn(name="CONTENT_ID", unique=false, nullable=false, insertable=false, updatable=false) } )
-    public Quiz getRelatedQuiz() {
+    public RelatedQuiz getRelatedQuiz() {
         return this.relatedQuiz;
     }
     
-    public void setRelatedQuiz(Quiz relatedQuiz) {
+    public void setRelatedQuiz(RelatedQuiz relatedQuiz) {
         this.relatedQuiz = relatedQuiz;
     }
     

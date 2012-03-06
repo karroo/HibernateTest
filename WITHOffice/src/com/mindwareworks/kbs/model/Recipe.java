@@ -20,6 +20,7 @@ import javax.persistence.Table;
 @Table(name="K_RECIPE"
     ,schema="KBSTRI"
 )
+@org.hibernate.annotations.BatchSize(size=10)
 public class Recipe  implements java.io.Serializable {
 
     // Fields    
@@ -142,7 +143,8 @@ public class Recipe  implements java.io.Serializable {
     public void setIngredientDetail(String ingredientDetail) {
         this.ingredientDetail = ingredientDetail;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="recipe")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
     public Set<RelatedRecipe> getRelatedRecipes() {
         return this.relatedRecipes;
     }

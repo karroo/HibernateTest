@@ -10,17 +10,17 @@ import org.junit.Test;
 import com.mindwareworks.kbs.model.Content;
 import com.mindwareworks.kbs.model.Product;
 import com.mindwareworks.kbs.model.RelatedProduct;
+import com.mindwareworks.kbs.model.RelatedRecipe;
 
-public class ProductTest extends BaseTest {
-
+public class RecipeTest extends BaseTest{
 	@Test
 	public void selectFromRelatedContent() {
 		try {
 			Transaction tx = session.beginTransaction();
 
-			List<RelatedProduct> rproducts = session.createQuery("from RelatedProduct where rownum< 5").list();
-			for(RelatedProduct rproduct:rproducts){
-				System.out.println(rproduct.getProduct().getProductName());
+			List<RelatedRecipe> rproducts = session.createQuery("from RelatedRecipe where rownum< 5").list();
+			for(RelatedRecipe rproduct:rproducts){
+				System.out.println(rproduct.getRecipe().getMenuTitle());
 			}
 			tx.commit();
 		} catch (Exception e) {
@@ -33,12 +33,12 @@ public class ProductTest extends BaseTest {
 			Transaction tx = session.beginTransaction();
 
 			Content content = (Content)session.get(Content.class, "343234");
-			Set<RelatedProduct> products = content.getRelatedProducts();
-			Iterator<RelatedProduct> iter = products.iterator();
+			Set<RelatedRecipe> products = content.getRelatedRecipes();
+			Iterator<RelatedRecipe> iter = products.iterator();
 			while (iter.hasNext()) {
-				RelatedProduct product = iter.next();
+				RelatedRecipe product = iter.next();
 
-				System.out.println(product.getProduct().getProductName());
+				System.out.println(product.getRecipe().getMenuTitle());
 			}
 			tx.commit();
 		} catch (Exception e) {
@@ -51,15 +51,15 @@ public class ProductTest extends BaseTest {
 			Transaction tx = session.beginTransaction();
 
 			List<Content> contents = session.createQuery(
-					"from Content").setMaxResults(5).list();// where rownum<6").list();
+					"from Content").setFirstResult(10).setMaxResults(5).list();
 			for (Content content : contents) {
-//				System.out.println(content.getContentId());
-				Set<RelatedProduct> products = content.getRelatedProducts();
-				Iterator<RelatedProduct> iter = products.iterator();
+				System.out.println(content.getContentKind());
+				Set<RelatedRecipe> products = content.getRelatedRecipes();
+				Iterator<RelatedRecipe> iter = products.iterator();
 				while (iter.hasNext()) {
-					RelatedProduct product = iter.next();
+					RelatedRecipe product = iter.next();
 
-					System.out.println(product.getProduct().getProductName());
+					System.out.println(product.getRecipe().getMenuTitle());
 				}
 			}
 			tx.commit();

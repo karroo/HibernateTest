@@ -45,7 +45,7 @@ public class Content  implements java.io.Serializable {
      private Set<Event> events = new HashSet<Event>(0);
      private Set<ChannelItem> channelItems = new HashSet<ChannelItem>(0);
      private Set<Member> myVideo = new HashSet<Member>(0);
-     private Set<Quiz> relatedQuizs = new HashSet<Quiz>(0);
+     private Set<RelatedQuiz> relatedQuizs = new HashSet<RelatedQuiz>(0);
      private Set<RelatedSurvey> relatedSurveies = new HashSet<RelatedSurvey>(0);
      private Set<RelatedContent> relatedContents = new HashSet<RelatedContent>(0);
      private Set<RelatedPerson> relatedPersons = new HashSet<RelatedPerson>(0);
@@ -212,15 +212,17 @@ public class Content  implements java.io.Serializable {
     public void setMyVideo(Set<Member> myVideo) {
         this.myVideo = myVideo;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
-    public Set<Quiz> getRelatedQuizs() {
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size = 10)
+    public Set<RelatedQuiz> getRelatedQuizs() {
         return this.relatedQuizs;
     }
     
-    public void setRelatedQuizs(Set<Quiz> relatedQuizs) {
+    public void setRelatedQuizs(Set<RelatedQuiz> relatedQuizs) {
         this.relatedQuizs = relatedQuizs;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size = 10)
     public Set<RelatedSurvey> getRelatedSurveies() {
         return this.relatedSurveies;
     }
@@ -228,7 +230,8 @@ public class Content  implements java.io.Serializable {
     public void setRelatedSurveies(Set<RelatedSurvey> relatedSurveies) {
         this.relatedSurveies = relatedSurveies;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size = 10)
     public Set<RelatedContent> getRelatedContents() {
         return this.relatedContents;
     }
@@ -236,7 +239,8 @@ public class Content  implements java.io.Serializable {
     public void setRelatedContents(Set<RelatedContent> relatedContents) {
         this.relatedContents = relatedContents;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size = 10)
     public Set<RelatedPerson> getRelatedPersons() {
         return this.relatedPersons;
     }
@@ -244,7 +248,8 @@ public class Content  implements java.io.Serializable {
     public void setRelatedPersons(Set<RelatedPerson> relatedPersons) {
         this.relatedPersons = relatedPersons;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size = 10)
     public Set<RelatedNews> getRelatedNewses() {
         return this.relatedNewses;
     }
@@ -252,7 +257,8 @@ public class Content  implements java.io.Serializable {
     public void setRelatedNewses(Set<RelatedNews> relatedNewses) {
         this.relatedNewses = relatedNewses;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size=10)
     public Set<RelatedRecipe> getRelatedRecipes() {
         return this.relatedRecipes;
     }
@@ -260,7 +266,8 @@ public class Content  implements java.io.Serializable {
     public void setRelatedRecipes(Set<RelatedRecipe> relatedRecipes) {
         this.relatedRecipes = relatedRecipes;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size = 10)
     public Set<RelatedShoopingPlace> getRelatedShootingPlaces() {
         return this.relatedShootingPlaces;
     }
@@ -269,7 +276,7 @@ public class Content  implements java.io.Serializable {
         this.relatedShootingPlaces = relatedShootingPlaces;
     }
     @OneToMany(mappedBy="content")
-    @org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
+    @org.hibernate.annotations.BatchSize(size = 10)
     public Set<RelatedProduct> getRelatedProducts() {
         return this.relatedProducts;
     }
@@ -277,7 +284,8 @@ public class Content  implements java.io.Serializable {
     public void setRelatedProducts(Set<RelatedProduct> relatedProducts) {
         this.relatedProducts = relatedProducts;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="content")
+    @OneToMany(mappedBy="content")
+    @org.hibernate.annotations.BatchSize(size = 10)
     public Set<Video> getVideos() {
         return this.videos;
     }

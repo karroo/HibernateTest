@@ -31,7 +31,6 @@ public class Video  implements java.io.Serializable {
      private String thumbnailFilePath;
      private String registrationDate;
      private Set<VideoFile> videoFiles = new HashSet<VideoFile>(0);
-
      // Constructors
 
     /** default constructor */
