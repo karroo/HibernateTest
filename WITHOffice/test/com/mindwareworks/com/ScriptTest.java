@@ -56,7 +56,7 @@ public class ScriptTest extends BaseTest {
 	public void selectFromContent() {
 		try {
 			
-			Content content = (Content)session.load(Content.class,"644");
+			Content content = (Content)session.load(Content.class,644);
 
 			Script script= content.getScript();
 			System.out.println(script.getScriptTitle());

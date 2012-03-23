@@ -17,4 +17,6 @@ public class ContentTest extends BaseTest {
 		List<Content> contents = dao.findPage(2,10);
 		System.out.println(contents.size());
 	}
+	
+	
 }

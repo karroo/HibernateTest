@@ -6,11 +6,14 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import com.mindwareworks.kbs.dao.ContentDAO;
 import com.mindwareworks.kbs.dao.DAOFactory;
 import com.mindwareworks.kbs.dao.QuestionDAO;
 import com.mindwareworks.kbs.model.AnswerExample;
+import com.mindwareworks.kbs.model.Content;
 import com.mindwareworks.kbs.model.CorrectAnswer;
 import com.mindwareworks.kbs.model.Question;
+import com.mindwareworks.kbs.model.RelatedQuiz;
 
 public class QuestionTest extends BaseTest {
 	@Test
@@ -26,7 +29,7 @@ public class QuestionTest extends BaseTest {
 	public void insert(){
 		QuestionDAO dao = DAOFactory.instance(DAOFactory.HIBERNATE).getQuestionDAO();
 		
-		Question question = new Question("다음중 맞는 것은?","1",10);
+		Question question = new Question("다음중 맞는 것은?","1",0);
 		Set<AnswerExample> examples = new HashSet<AnswerExample>();
 		examples.add(new AnswerExample(1,"이거다"));
 		examples.add(new AnswerExample(2,"저거다"));
@@ -38,7 +41,7 @@ public class QuestionTest extends BaseTest {
 	@Test
 	public void update() {
 		QuestionDAO dao = DAOFactory.instance(DAOFactory.HIBERNATE).getQuestionDAO();
-		Question question = dao.findById(13,false);
+		Question question = dao.findById(14,false);
 		
 		question.getAnswerExamples().add(new AnswerExample(3,"몰라요"));
 		question.setCorrectAnswer(new CorrectAnswer("이거다"));
@@ -49,7 +52,7 @@ public class QuestionTest extends BaseTest {
 	@Test
 	public void delete() {
 		QuestionDAO dao = DAOFactory.instance(DAOFactory.HIBERNATE).getQuestionDAO();
-		Question question = dao.findById(12,false);
+		Question question = dao.findById(14,false);
 //		
 		dao.makeTransient(question);
 	}
@@ -84,6 +87,19 @@ public class QuestionTest extends BaseTest {
 //		relatedScripts.size();
 	}
 
+	
+	@Test
+	public void selectQuiz(){
+		ContentDAO dao  = DAOFactory.instance(DAOFactory.HIBERNATE).getContentDAO();
+		Content content = dao.findById(1, false);
+		Set<RelatedQuiz> quizs= content.getRelatedQuizs();
+		System.out.println(quizs.size());
+		for(RelatedQuiz quiz:quizs){
+			System.out.println(quiz.getStartTime());
+			System.out.println(quiz.getStartTime()+","+quiz.getEndTime()+","+quiz.getQuestion().getQuestionContents());
+			
+		}
+	}
 	
 	
 }

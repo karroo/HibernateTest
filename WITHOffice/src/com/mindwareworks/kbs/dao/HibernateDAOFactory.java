@@ -4,6 +4,7 @@ import com.mindwareworks.kbs.dao.hibernate.CaptionHibernateDAO;
 import com.mindwareworks.kbs.dao.hibernate.ContentHibernateDAO;
 import com.mindwareworks.kbs.dao.hibernate.QuestionHibernateDAO;
 import com.mindwareworks.kbs.dao.hibernate.ScriptHibernateDAO;
+import com.mindwareworks.kbs.dao.hibernate.ShootingPlaceHibernateDAO;
 
 public class HibernateDAOFactory extends DAOFactory {
 
@@ -22,7 +23,11 @@ public class HibernateDAOFactory extends DAOFactory {
 		// TODO Auto-generated method stub
 		return (ContentDAO)instantiateDAO(ContentHibernateDAO.class);
 	}
-	
+	@Override
+	public ShootingPlaceDAO getShootingPlaceDAO() {
+		// TODO Auto-generated method stub
+		return (ShootingPlaceDAO)instantiateDAO(ShootingPlaceHibernateDAO.class);
+	}
 	
 	private GenericHibernateDAO instantiateDAO(Class daoClass){
 		try{

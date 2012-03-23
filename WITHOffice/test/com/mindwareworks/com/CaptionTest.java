@@ -53,7 +53,7 @@ public class CaptionTest extends BaseTest {
 	public void selectFromContent() {
 		try {
 			
-			Content content = (Content)session.load(Content.class,"644");
+			Content content = (Content)session.load(Content.class,644);
 
 			Set<Caption> captions = content.getCaptions();
 			for(Caption rs:captions){
@@ -98,7 +98,7 @@ public class CaptionTest extends BaseTest {
 		CaptionDAO dao = factory.getCaptionDAO();
 		Caption caption = dao.findById(5,false);
 		
-		Content content = (Content)session.load(Content.class,"644");
+		Content content = (Content)session.load(Content.class,644);
 
 		content.getCaptions().add(caption);
 		

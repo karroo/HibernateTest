@@ -5,6 +5,7 @@ package com.mindwareworks.kbs.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Id;
 
 @Embeddable
 public class AnswerExample implements java.io.Serializable{ //,CompositeUserType {
@@ -24,6 +25,7 @@ public class AnswerExample implements java.io.Serializable{ //,CompositeUserType
 		this.exampleNumber = exampleNumber;
 		this.example = example;
 	}
+	
 	
 	@Column(name="EXAMPLE_NUMBER",nullable=false)
 	public Integer getExampleNumber() {

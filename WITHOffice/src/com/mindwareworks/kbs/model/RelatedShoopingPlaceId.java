@@ -15,7 +15,7 @@ public class RelatedShoopingPlaceId  implements java.io.Serializable {
     // Fields    
 
      private Integer contentId;
-     private Integer placeId;
+     private Long placeId;
 
      // Constructors
 
@@ -24,13 +24,14 @@ public class RelatedShoopingPlaceId  implements java.io.Serializable {
     }
 
     /** full constructor */
-    public RelatedShoopingPlaceId(Integer contentId, Integer placeId) {
+    public RelatedShoopingPlaceId(Integer contentId, Long placeId) {
        this.contentId = contentId;
        this.placeId = placeId;
     }
    
     // Property accessors
 
+    
     @Column(name="CONTENT_ID", unique=false, nullable=false, insertable=true, updatable=true, precision=0)
     public Integer getContentId() {
         return this.contentId;
@@ -41,11 +42,11 @@ public class RelatedShoopingPlaceId  implements java.io.Serializable {
     }
 
     @Column(name="PLACE_ID", unique=false, nullable=false, insertable=true, updatable=true, precision=0)
-    public Integer getPlaceId() {
+    public Long getPlaceId() {
         return this.placeId;
     }
     
-    public void setPlaceId(Integer placeId) {
+    public void setPlaceId(Long placeId) {
         this.placeId = placeId;
     }
 

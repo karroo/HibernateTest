@@ -114,6 +114,7 @@ public class Question implements java.io.Serializable {
 		@AttributeOverride(name = "element.exampleNumber", column = @Column(name = "EXAMPLE_NUMBER",nullable=false)),
 		@AttributeOverride(name = "element.example", column = @Column(name = "EXAMPLE",nullable=false))
 	})
+	@org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.JOIN)
 	public Set<AnswerExample> getAnswerExamples() {
 		return this.answerExamples;
 	}
