@@ -15,10 +15,12 @@ import com.mindwareworks.kbs.util.HibernateUtil;
 public class BaseTest {
 
 	static Session session;
+	static Transaction tx ;
 	@BeforeClass
 	public static void createSession(){
 		try{
-			session = HibernateUtil.getSessionFactory().openSession();
+			session = HibernateUtil.getSessionFactory().getCurrentSession();
+			tx = session.beginTransaction();
 		}catch(Exception e){
 			e.printStackTrace();
 			
@@ -78,6 +80,7 @@ public class BaseTest {
 	
 	@AfterClass
 	public static void closeSession(){
-		session.close();
+		tx.commit();
+//		session.close();
 	}
 }

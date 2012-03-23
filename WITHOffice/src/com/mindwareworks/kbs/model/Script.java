@@ -3,13 +3,13 @@ package com.mindwareworks.kbs.model;
 // Generated 2012. 3. 2 오후 8:12:59 by Hibernate Tools 3.2.0.beta8
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 /**
@@ -19,16 +19,18 @@ import javax.persistence.Table;
 @Table(name="K_SCRIPT"
     ,schema="KBSTRI"
 )
-@SecondaryTable(name="K_RELATED_SCRIPT")
+
+@org.hibernate.annotations.GenericGenerator(name="sequence",strategy="sequence",
+parameters={@org.hibernate.annotations.Parameter(name="sequence", value="SEQ_SCRIPT")})
 public class Script  implements java.io.Serializable {
 
     // Fields    
 
      private Integer scriptId;
-     private Content content;
      private String scriptTitle;
      private String scriptFilePath;
      private String scriptFullText;
+     private Set<RelatedScript> relatedScripts = new HashSet<RelatedScript>(0);
 
      // Constructors
 
@@ -41,17 +43,15 @@ public class Script  implements java.io.Serializable {
         this.scriptId = scriptId;
     }
     /** full constructor */
-    public Script(Integer scriptId, Content content, String scriptTitle, String scriptFilePath, String scriptFullText) {
-       this.scriptId = scriptId;
-       this.content = content;
+    public Script(String scriptTitle, String scriptFilePath, String scriptFullText) {
        this.scriptTitle = scriptTitle;
        this.scriptFilePath = scriptFilePath;
        this.scriptFullText = scriptFullText;
     }
    
     // Property accessors
-     @Id
-    
+    @Id    
+    @GeneratedValue(generator="sequence")
     @Column(name="SCRIPT_ID", unique=false, nullable=false, insertable=true, updatable=true, precision=0)
     public Integer getScriptId() {
         return this.scriptId;
@@ -61,15 +61,15 @@ public class Script  implements java.io.Serializable {
         this.scriptId = scriptId;
     }
     
-	@ManyToOne
-	@JoinColumn(table="K_RELATED_SCRIPT",name="CONTENT_ID")
-    public Content getContent() {
-        return this.content;
-    }
-    
-    public void setContent(Content content) {
-        this.content = content;
-    }
+//    @OneToMany(mappedBy="script")
+//    @org.hibernate.annotations.BatchSize(size=10)
+//    public Set<RelatedScript> getRelatedScripts() {
+//        return this.relatedScripts;
+//    }
+//    
+//    public void setRelatedScripts(Set<RelatedScript> relatedScripts) {
+//        this.relatedScripts = relatedScripts;
+//    }
     
     @Column(name="SCRIPT_TITLE", unique=false, nullable=true, insertable=true, updatable=true)
     public String getScriptTitle() {

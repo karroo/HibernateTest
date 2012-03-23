@@ -18,7 +18,7 @@ public class VideoTest extends BaseTest{
 			System.out.println(content.getFileName());
 			if(content.getRelatedVideos().size() >0){
 				RelatedVideo rvideo = content.getRelatedVideos().iterator().next();
-				System.out.println(rvideo.getContent().getCaption().getCaptionFilePath());
+//				System.out.println(rvideo.getContent().getCaption().getCaptionFilePath());
 			}
 			System.out.println(content.getRelatedVideos().size());
 		}

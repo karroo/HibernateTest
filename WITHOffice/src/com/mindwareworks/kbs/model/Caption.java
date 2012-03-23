@@ -5,6 +5,7 @@ package com.mindwareworks.kbs.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,13 +19,13 @@ import javax.persistence.Table;
 @Table(name="K_CAPTION"
     ,schema="KBSTRI"
 )
-@SecondaryTable(name="K_RELATED_CAPTION")
+@org.hibernate.annotations.GenericGenerator(name="sequence",strategy="sequence",
+parameters={@org.hibernate.annotations.Parameter(name="sequence", value="SEQ_CAPTION")})
 public class Caption  implements java.io.Serializable {
 
     // Fields    
 
      private Integer captionId;
-     private Content content;
      private String fileFormat;
      private String captionFilePath;
      private String captionLanguageKind;
@@ -40,17 +41,15 @@ public class Caption  implements java.io.Serializable {
         this.captionId = captionId;
     }
     /** full constructor */
-    public Caption(Integer captionId, Content content, String fileFormat, String captionFilePath, String captionLanguageKind) {
-       this.captionId = captionId;
-       this.content = content;
+    public Caption(String fileFormat, String captionFilePath, String captionLanguageKind) {
        this.fileFormat = fileFormat;
        this.captionFilePath = captionFilePath;
        this.captionLanguageKind = captionLanguageKind;
     }
    
     // Property accessors
-     @Id
-    
+    @Id
+    @GeneratedValue(generator="sequence")
     @Column(name="CAPTION_ID", unique=false, nullable=false, insertable=true, updatable=true, precision=0)
     public Integer getCaptionId() {
         return this.captionId;
@@ -59,15 +58,7 @@ public class Caption  implements java.io.Serializable {
     public void setCaptionId(Integer captionId) {
         this.captionId = captionId;
     }
-    @ManyToOne
-    @JoinColumn(table="K_RELATED_CAPTION",name="CONTENT_ID")
-    public Content getContent() {
-        return this.content;
-    }
     
-    public void setContent(Content content) {
-        this.content = content;
-    }
     
     @Column(name="FILE_FORMAT", unique=false, nullable=true, insertable=true, updatable=true, length=8)
     public String getFileFormat() {

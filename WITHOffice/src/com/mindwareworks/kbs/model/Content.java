@@ -29,7 +29,7 @@ import org.hibernate.annotations.NotFoundAction;
 @Table(name="K_CONTENT"
     ,schema="KBSTRI"
 )
-@org.hibernate.annotations.BatchSize(size=10)
+//@org.hibernate.annotations.BatchSize(size=10)
 public class Content  implements java.io.Serializable {
 
     // Fields    
@@ -38,7 +38,7 @@ public class Content  implements java.io.Serializable {
      private Article article;
      private ObjectCategory objectCategory;
      private String contentKind;
-     private Caption caption;
+     private Set<Caption> captions;
      private Script script;
      private Set<ContentRanking> contentRankings = new HashSet<ContentRanking>(0);
      private Set<Member> contentSuggestion = new HashSet<Member>(0);
@@ -58,6 +58,7 @@ public class Content  implements java.io.Serializable {
      private Set<RelatedProduct> relatedProducts = new HashSet<RelatedProduct>(0);
      private Set<RelatedVideo> relatedVideos = new HashSet<RelatedVideo>(0);
 
+     
      // Constructors
 
     /** default constructor */
@@ -80,9 +81,9 @@ public class Content  implements java.io.Serializable {
     public void setContentId(String contentId) {
         this.contentId = contentId;
     }
-@ManyToOne(cascade={},
-        fetch=FetchType.LAZY)
     
+    @ManyToOne(cascade={},
+        fetch=FetchType.LAZY)
     @JoinColumn(name="ARTICLEID", unique=false, nullable=true, insertable=true, updatable=true)
     public Article getArticle() {
         return this.article;
@@ -91,9 +92,9 @@ public class Content  implements java.io.Serializable {
     public void setArticle(Article article) {
         this.article = article;
     }
-@ManyToOne(cascade={},
-        fetch=FetchType.LAZY)
     
+    @ManyToOne(cascade={},
+        fetch=FetchType.LAZY)
     @JoinColumns( { 
         @JoinColumn(name="OBJID", unique=false, nullable=true, insertable=true, updatable=true), 
         @JoinColumn(name="CATEGORYID", unique=false, nullable=true, insertable=true, updatable=true) } )
@@ -114,24 +115,35 @@ public class Content  implements java.io.Serializable {
         this.contentKind = contentKind;
     }
     
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(
     		name="K_RELATED_CAPTION",
     		joinColumns = {@JoinColumn(name="content_id")},
     		inverseJoinColumns = {@JoinColumn(name="caption_id")}
     )
-    public Caption getCaption() {
-        return this.caption;
+    public Set<Caption> getCaptions() {
+        return this.captions;
     }
     
-    public void setCaption(Caption caption) {
-        this.caption = caption;
+    public void setCaptions(Set<Caption> captions) {
+        this.captions = captions;
     }
+    
+//    @OneToMany(mappedBy="content",fetch=FetchType.EAGER)
+//    @org.hibernate.annotations.BatchSize(size = 10)
+//    public Set<RelatedScript> getRelatedScripts() {
+//        return this.relatedScripts;
+//    }
+//    
+//    public void setRelatedScripts(Set<RelatedScript> relatedScripts) {
+//        this.relatedScripts = relatedScripts;
+//    }
     @OneToOne(fetch=FetchType.LAZY)
     @JoinTable(
     		name="K_RELATED_SCRIPT",
-    		joinColumns = {@JoinColumn(name="content_id")},
-    		inverseJoinColumns = {@JoinColumn(name="script_id")}
+    		joinColumns={@JoinColumn(name="content_id")},
+    		inverseJoinColumns ={@JoinColumn(name="script_id")}
+    		
     )
     public Script getScript() {
         return this.script;
