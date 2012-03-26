@@ -40,6 +40,12 @@
 	<classpathentry kind="lib" path="lib/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="lib/freemarker.jar"/>
 	<classpathentry kind="lib" path="lib/jtidy-r8-21122004.jar"/>
+	<classpathentry kind="lib" path="lib/json-20090211.jar"/>
+	<classpathentry kind="lib" path="lib/google-gson-stream-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-asl-1.9.5.jar" sourcepath="C:/Users/karroo/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.9.5/jackson-core-asl-1.9.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-mapper-asl-1.9.5.jar" sourcepath="C:/Users/karroo/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.5/jackson-mapper-asl-1.9.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-module-hibernate-0.7.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="build/classes"/>

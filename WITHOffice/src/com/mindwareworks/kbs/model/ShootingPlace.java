@@ -115,5 +115,15 @@ public class ShootingPlace implements java.io.Serializable {
 	public void setPosid(Integer posid) {
 		this.posid = posid;
 	}
+	
+	
+	public boolean equals(java.lang.Object object){
+		if( ! (object instanceof ShootingPlace)){
+			return false;
+		}
+		
+		ShootingPlace place = (ShootingPlace)object;
+		return place.getPlaceId().equals(placeId);
+	}
 
 }

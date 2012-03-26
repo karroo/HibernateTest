@@ -35,18 +35,15 @@ public class RelatedProduct implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public RelatedProduct(RelatedProductId id, Content content, Product product) {
-		this.id = id;
+	public RelatedProduct(Content content, Product product,Integer startTime,Integer endTime) {
+		this.id = new RelatedProductId(content.getContentId(),product.getProductId());
 		this.content = content;
 		this.product = product;
 	}
 
 	/** full constructor */
-	public RelatedProduct(RelatedProductId id, Content content,
-			Product product, Integer startTime, Integer endTime) {
-		this.id = id;
-		this.content = content;
-		this.product = product;
+	public RelatedProduct(Integer contentId,Integer productId, Integer startTime, Integer endTime) {
+		this.id = new RelatedProductId(contentId,productId);
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
@@ -74,7 +71,7 @@ public class RelatedProduct implements java.io.Serializable {
 		this.content = content;
 	}
 
-	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "PRODUCT_ID", unique = false, nullable = false, insertable = false, updatable = false)
 	public Product getProduct() {
 		return this.product;

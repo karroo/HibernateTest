@@ -8,11 +8,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,7 +20,7 @@ import javax.persistence.Table;
 @Table(name="K_PRODUCT"
     ,schema="KBSTRI"
 )
-@org.hibernate.annotations.BatchSize(size=10)
+@org.hibernate.annotations.GenericGenerator(name = "sequence", strategy = "sequence", parameters = { @org.hibernate.annotations.Parameter(name = "sequence", value = "SEQ_PRODUCT") })
 public class Product  implements java.io.Serializable {
 
     // Fields    
@@ -51,9 +48,23 @@ public class Product  implements java.io.Serializable {
         this.productId = productId;
     }
     
-    // Property accessors
+    public Product(String productName, String mainImagePath,
+			String detailImagePath, String productDescription,
+			Integer productPrice, String sponsorName, String sponsorUrl,
+			String purchaseUrl) {
+		this.productName = productName;
+		this.mainImagePath = mainImagePath;
+		this.detailImagePath = detailImagePath;
+		this.productDescription = productDescription;
+		this.productPrice = productPrice;
+		this.sponsorName = sponsorName;
+		this.sponsorUrl = sponsorUrl;
+		this.purchaseUrl = purchaseUrl;
+	}
+
+	// Property accessors
      @Id
-    
+    @GeneratedValue(generator="sequence")
     @Column(name="PRODUCT_ID", unique=false, nullable=false, insertable=true, updatable=true, precision=0)
     public Integer getProductId() {
         return this.productId;

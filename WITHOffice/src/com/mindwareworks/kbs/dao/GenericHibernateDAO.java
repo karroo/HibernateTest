@@ -40,9 +40,9 @@ public  abstract class GenericHibernateDAO<T, ID extends Serializable> implement
 	public T findById(ID id, boolean lock) {
 		T entity;
 		if(lock)
-			entity = (T) getSession().load(getPersistentClass(), id,LockMode.UPGRADE);
+			entity = (T) getSession().get(getPersistentClass(), id,LockMode.UPGRADE);
 		else
-			entity = (T) getSession().load(getPersistentClass(), id);
+			entity = (T) getSession().get(getPersistentClass(), id);
 		
 		return entity;
 	}

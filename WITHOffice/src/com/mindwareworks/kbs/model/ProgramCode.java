@@ -27,11 +27,15 @@ public class ProgramCode  implements java.io.Serializable {
     // Fields    
 
      private String programCode;
+     @org.codehaus.jackson.annotate.JsonIgnore
      private Object object;
+     @org.codehaus.jackson.annotate.JsonIgnore
      private Set<Program> programs = new HashSet<Program>(0);
+     @org.codehaus.jackson.annotate.JsonIgnore
      private Set<SegmentCode> segmentCode = new HashSet<SegmentCode>(0);
 
      // Constructors
+     
 
     /** default constructor */
     public ProgramCode() {

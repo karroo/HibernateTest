@@ -28,7 +28,9 @@ public class Program  implements java.io.Serializable {
     // Fields    
 
      private Integer contentId;
+     
      private ProgramCode programCode;
+//     @org.codehaus.jackson.annotate.JsonIgnore
      private Content content;
      private String programId;
      private Boolean informationPossibleYn;
@@ -41,8 +43,6 @@ public class Program  implements java.io.Serializable {
      private String programDeliberationGrade;
      private String programGenre;
      private Integer durationSecond;
-     private Set<Programming> programmings = new HashSet<Programming>(0);
-     private Set<DailyRunning> dailyRunnings = new HashSet<DailyRunning>(0);
 
      // Constructors
 
@@ -57,7 +57,7 @@ public class Program  implements java.io.Serializable {
         this.programId = programId;
     }
     /** full constructor */
-    public Program(Integer contentId, ProgramCode programCode, Content content, String programId, Boolean informationPossibleYn, Integer programSequenceNumber, String programTitle, String originalTitle, String programSubtitle, String mainStory, String mainImagePath, String programDeliberationGrade, String programGenre, Integer durationSecond, Set<Programming> programmings, Set<DailyRunning> dailyRunnings) {
+    public Program(Integer contentId, ProgramCode programCode, Content content, String programId, Boolean informationPossibleYn, Integer programSequenceNumber, String programTitle, String originalTitle, String programSubtitle, String mainStory, String mainImagePath, String programDeliberationGrade, String programGenre, Integer durationSecond) {
        this.contentId = contentId;
        this.programCode = programCode;
        this.content = content;
@@ -72,8 +72,6 @@ public class Program  implements java.io.Serializable {
        this.programDeliberationGrade = programDeliberationGrade;
        this.programGenre = programGenre;
        this.durationSecond = durationSecond;
-       this.programmings = programmings;
-       this.dailyRunnings = dailyRunnings;
     }
    
     // Property accessors
@@ -87,9 +85,8 @@ public class Program  implements java.io.Serializable {
     public void setContentId(Integer contentId) {
         this.contentId = contentId;
     }
-@ManyToOne(cascade={},
-        fetch=FetchType.LAZY)
     
+    @ManyToOne(cascade={},fetch=FetchType.EAGER)
     @JoinColumn(name="PROGRAM_CODE", unique=false, nullable=true, insertable=true, updatable=true)
     public ProgramCode getProgramCode() {
         return this.programCode;
@@ -98,9 +95,8 @@ public class Program  implements java.io.Serializable {
     public void setProgramCode(ProgramCode programCode) {
         this.programCode = programCode;
     }
-@ManyToOne(cascade={},
-        fetch=FetchType.LAZY)
     
+    @ManyToOne(cascade={},fetch=FetchType.LAZY)
     @JoinColumn(name="CONTENT_ID", unique=true, nullable=false, insertable=false, updatable=false)
     public Content getContent() {
         return this.content;
@@ -208,22 +204,7 @@ public class Program  implements java.io.Serializable {
     public void setDurationSecond(Integer durationSecond) {
         this.durationSecond = durationSecond;
     }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="program")
-    public Set<Programming> getProgrammings() {
-        return this.programmings;
-    }
     
-    public void setProgrammings(Set<Programming> programmings) {
-        this.programmings = programmings;
-    }
-    @OneToMany(cascade={}, fetch=FetchType.LAZY, mappedBy="program")
-    public Set<DailyRunning> getDailyRunnings() {
-        return this.dailyRunnings;
-    }
-    
-    public void setDailyRunnings(Set<DailyRunning> dailyRunnings) {
-        this.dailyRunnings = dailyRunnings;
-    }
 
 
 

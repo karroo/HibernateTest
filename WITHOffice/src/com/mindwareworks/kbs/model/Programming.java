@@ -21,7 +21,9 @@ public class Programming implements java.io.Serializable {
 	// Fields
 
 	private Integer scheduleUniqueId;
+//	@org.codehaus.jackson.annotate.JsonIgnore
 	private Program program;
+//	@org.codehaus.jackson.annotate.JsonIgnore
 	private Channel channel;
 	private String programTitle;
 	private String programPlannedDate;
@@ -66,8 +68,9 @@ public class Programming implements java.io.Serializable {
 		this.scheduleUniqueId = scheduleUniqueId;
 	}
 
-	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "CONTENT_ID", unique = false, nullable = true, insertable = true, updatable = true)
+//	@org.hibernate.annotations.Fetch(FetchMode.JOIN)
 	public Program getProgram() {
 		return this.program;
 	}
@@ -76,7 +79,8 @@ public class Programming implements java.io.Serializable {
 		this.program = program;
 	}
 
-	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
+	
+	@ManyToOne(cascade = {}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "CHANNEL_CODE", unique = false, nullable = true, insertable = true, updatable = true)
 	public Channel getChannel() {
 		return this.channel;

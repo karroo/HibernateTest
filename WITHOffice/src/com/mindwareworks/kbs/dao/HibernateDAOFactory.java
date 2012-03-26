@@ -2,6 +2,7 @@ package com.mindwareworks.kbs.dao;
 
 import com.mindwareworks.kbs.dao.hibernate.CaptionHibernateDAO;
 import com.mindwareworks.kbs.dao.hibernate.ContentHibernateDAO;
+import com.mindwareworks.kbs.dao.hibernate.ProductHibernateDAO;
 import com.mindwareworks.kbs.dao.hibernate.QuestionHibernateDAO;
 import com.mindwareworks.kbs.dao.hibernate.ScriptHibernateDAO;
 import com.mindwareworks.kbs.dao.hibernate.ShootingPlaceHibernateDAO;
@@ -24,16 +25,16 @@ public class HibernateDAOFactory extends DAOFactory {
 		return (ContentDAO)instantiateDAO(ContentHibernateDAO.class);
 	}
 	@Override
-	public ShootingPlaceDAO getShootingPlaceDAO() {
+	public ProductDAO getProductDAO() {
 		// TODO Auto-generated method stub
-		return (ShootingPlaceDAO)instantiateDAO(ShootingPlaceHibernateDAO.class);
+		return (ProductDAO)instantiateDAO(ProductHibernateDAO.class);
 	}
 	
 	private GenericHibernateDAO instantiateDAO(Class daoClass){
 		try{
 			GenericHibernateDAO dao = (GenericHibernateDAO)daoClass.newInstance();
 			return dao;
-		}catch(Exception ex){
+		}catch(Exception ex){ex.printStackTrace();
 			throw new RuntimeException("cannot create DAO : "+daoClass,ex);
 		}
 	}
@@ -41,6 +42,11 @@ public class HibernateDAOFactory extends DAOFactory {
 	public QuestionDAO getQuestionDAO() {
 		// TODO Auto-generated method stub
 		return (QuestionDAO)instantiateDAO(QuestionHibernateDAO.class);
+	}
+	@Override
+	public ShootingPlaceDAO getShootingPlaceDAO() {
+		// TODO Auto-generated method stub
+		return (ShootingPlaceHibernateDAO)instantiateDAO(ShootingPlaceHibernateDAO.class);
 	}
 	
 	

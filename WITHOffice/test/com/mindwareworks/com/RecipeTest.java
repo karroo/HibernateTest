@@ -81,7 +81,7 @@ public class RecipeTest extends BaseTest{
 				Iterator<RelatedProduct> iter = contents.iterator();
 				while (iter.hasNext()) {
 					RelatedProduct content = iter.next();
-					System.out.println(content.getContent().getContentKind());
+//					System.out.println(content.getContent().getContentKind());
 				}
 			}
 			tx.commit();

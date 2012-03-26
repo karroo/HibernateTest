@@ -110,10 +110,10 @@ public class Question implements java.io.Serializable {
 			joinColumns = @JoinColumn(name="question_id")
 			)
 	@org.hibernate.annotations.OrderBy(clause="EXAMPLE_NUMBER asc")
-	@AttributeOverrides({
-		@AttributeOverride(name = "element.exampleNumber", column = @Column(name = "EXAMPLE_NUMBER",nullable=false)),
-		@AttributeOverride(name = "element.example", column = @Column(name = "EXAMPLE",nullable=false))
-	})
+//	@AttributeOverrides({
+//		@AttributeOverride(name = "element.exampleNumber", column = @Column(name = "EXAMPLE_NUMBER",nullable=false)),
+//		@AttributeOverride(name = "element.example", column = @Column(name = "EXAMPLE",nullable=false))
+//	})
 	@org.hibernate.annotations.Fetch(org.hibernate.annotations.FetchMode.JOIN)
 	public Set<AnswerExample> getAnswerExamples() {
 		return this.answerExamples;

@@ -16,5 +16,6 @@ public abstract class DAOFactory {
 	public abstract ContentDAO getContentDAO();
 	public abstract QuestionDAO getQuestionDAO();
 	public abstract ShootingPlaceDAO getShootingPlaceDAO();
+	public abstract ProductDAO getProductDAO();
 	
 }

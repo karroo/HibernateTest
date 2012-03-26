@@ -22,6 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "K_RELATED_SURVEY", schema = "KBSTRI")
+@org.hibernate.annotations.BatchSize(size=10)
 public class RelatedSurvey implements java.io.Serializable {
 
 	// Fields
@@ -82,7 +83,7 @@ public class RelatedSurvey implements java.io.Serializable {
 		this.content = content;
 	}
 
-	@ManyToOne(cascade = {}, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "QUESTION_ID", unique = false, nullable = false, insertable = false, updatable = false)
 	public Question getQuestion() {
 		return this.question;

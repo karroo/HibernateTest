@@ -16,7 +16,7 @@ public class ShootingPlaceTest extends BaseTest {
 	@Test
 	public void selectShootingPlace(){
 		ShootingPlaceDAO dao = DAOFactory.instance(DAOFactory.HIBERNATE).getShootingPlaceDAO();
-		ShootingPlace question = dao.findById(12,false);
+		ShootingPlace question = dao.findById(1L,false);
 		System.out.println(question.getShootingPlace());
 		
 	}
@@ -32,7 +32,7 @@ public class ShootingPlaceTest extends BaseTest {
 	@Test
 	public void update() {
 		ShootingPlaceDAO dao = DAOFactory.instance(DAOFactory.HIBERNATE).getShootingPlaceDAO();
-		ShootingPlace place = dao.findById(6,false);
+		ShootingPlace place = dao.findById(6L,false);
 		place.setShootingPlaceContact("0101112222");
 		
 		
@@ -42,7 +42,7 @@ public class ShootingPlaceTest extends BaseTest {
 	@Test
 	public void delete() {
 		ShootingPlaceDAO dao = DAOFactory.instance(DAOFactory.HIBERNATE).getShootingPlaceDAO();
-		ShootingPlace place = dao.findById(6,false);
+		ShootingPlace place = dao.findById(6L,false);
 //		
 		dao.makeTransient(place);
 	}
@@ -89,8 +89,8 @@ public class ShootingPlaceTest extends BaseTest {
 			
 		}
 		ShootingPlaceDAO dao2 = DAOFactory.instance(DAOFactory.HIBERNATE).getShootingPlaceDAO();
-		ShootingPlace question = dao2.findById(7,false);
-		//places.add(new RelatedShootingPlace());
+		ShootingPlace place = dao2.findById(7L,false);
+		places.add(new RelatedShoopingPlace(place,200,300));
 	}
 	
 	
